@@ -79,16 +79,22 @@ h1 {
 /*state-initial*/
 .state-initial-prim-button {
 	width: 70%;
-	height: 40%;
+	flex-basis: 200pt;
 	margin:auto;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	flex-shrink: 2;
 	font-size: 36pt;
 
 }
 
 .state-initial-sec-button {
 	width: 70%;
-	height: 20%;
 	margin:auto;
+	flex-basis: 100pt;
+	flex-shrink:1;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
 	font-size: 36pt;
 }
 
