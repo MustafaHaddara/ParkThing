@@ -9,20 +9,24 @@
   <div id="flex-container">
     <div id="flex-row">
       <div id="ui-container">
-      <div id="state-initial" class="expand">
-      <button id="state-initial-new-button" class="button green">Hello</button>
-      <button id="state-initial-refund-button" class="button red">Hello</button>
-      </div>
-      <div id="state-other" class="expand">
-      </div>
+        <div id="state-initial" class="expand">
+        <h1> Ticket Machine </h1>
+          <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
+          <button id="state-initial-refund-button" class="button red-button state-initial-sec-button">Refund Unused Minutes</button>
+          <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start/Stop Prepaid Ticket</button>
+          TODO: Time here
+        </div>
+        <div id="state-time" class="expand">
+        </div>
       </div>
       <div id="coin-container">
-      Coin and card thing here
+        Coin and card thing here
       </div>
     </div>
     <div id="print-container">
-    Printer here
+      Printer here
     </div>
   </div>
+  <script type="text/javascript" src="javascripts/main.js"></script>
 </body>
 </html>
