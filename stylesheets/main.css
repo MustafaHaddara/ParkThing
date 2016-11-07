@@ -9,6 +9,7 @@ html, body {
 
 h1 {
 	margin: auto;
+	align-self: center;
 }
 
 #flex-container {
@@ -116,6 +117,14 @@ h1 {
 	border-radius: 25pt;
 	width: 25pt;
 	height:25pt;
+}
+
+/*state-refund*/
+#state-refund {
+	display: flex;
+	flex-basis: 200pt;
+	flex-shrink: 2;
+	font-size: 36pt;
 }
 
 /*state declarations*/
