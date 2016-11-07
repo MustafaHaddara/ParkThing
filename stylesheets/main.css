@@ -1,0 +1,89 @@
+/*Only flex if we're above 1366x768 + some*/
+/*Do noscript check*/
+/*Have hidden text to indicate CSS loading failure*/
+
+html, body {
+	margin:0;
+	padding: 0;
+}
+
+#flex-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+}
+
+#flex-row {
+	display:flex;
+	flex-basis: 80vh;
+	flex-grow: 5;
+}
+
+#ui-container {
+	background-color: #FF0000;
+	/*display: flex;*/
+	flex-basis: 300px;
+	flex-grow: 50;
+}
+#coin-container {
+	background-color: #00FF00;
+	display: flex;
+	flex-basis: 200px;
+	flex-grow: 1;
+}
+
+#print-container {
+	background-color: #0000FF;
+	display: flex;
+	flex-basis: 150px;
+	flex-grow: 1;
+}
+
+.button {
+	border-radius: 10px;
+	border: none;
+}
+
+
+.button:active {
+	box-shadow: inset 1px 1px 1px 1px;
+}
+
+.green {
+	background-color: #AAFFAA;
+	box-shadow: 1px 1px 1px 1px rgba(85, 127, 85, 0.80);
+}
+
+.red {
+	background-color: #FFAAAA;
+	box-shadow: 1px 1px 1px 1px rgba(127, 85, 85, 0.80);
+}
+
+.expand {
+	width: 100%;
+	height: 100%;
+}
+
+#state-initial-new-button {
+	width: 70%;
+	height: 40%;
+	margin:auto;
+
+}
+
+#state-initial-refund-button {
+	width: 70%;
+	height: 20%;
+	margin:auto;
+
+}
+
+#state-initial {
+	display: flex;
+	flex-direction: column;
+}
+
+#state-other {
+	display:none;
+}
