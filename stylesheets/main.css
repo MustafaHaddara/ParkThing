@@ -122,14 +122,33 @@ h1 {
 	/*width: 25pt;*/
 }
 
+h2{
+	margin: 0px;
+
+}
+
+.log-in-account-input{
+	background-color: #7284A8;
+	box-shadow: 2px 2px 2px 2px rgba(26, 33, 42, 0.80);
+	align-content: center;
+}
+
+.log-in-password-input{
+	background-color: #9E788F;
+	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
+	align-content: center;
+
+}
+
+
 /*state declarations*/
 
-#state-initial {
+#state-log-in {
 	display: flex;
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-payment-card, #state-log-in, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
+#state-time, #state-choose-payment, #state-payment-cash, #state-initial, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
 	display:none;
 	flex-direction:column;
 }
