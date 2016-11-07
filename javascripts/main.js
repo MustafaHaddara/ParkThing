@@ -8,6 +8,7 @@ document.getElementById("state-initial-new-button").addEventListener('click', fu
     payment_time = 0;
     document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
     document.getElementById("state-time-minus-time").disabled = true;
+    document.getElementById("state-time-plus-time").disabled = false;
     document.getElementById("state-time-pay-button").disabled = true;
     document.getElementById("state-time").style.display = "flex";
 }, false);
@@ -29,6 +30,9 @@ document.getElementById("state-time-plus-time").addEventListener('click', functi
 	    document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
 	    document.getElementById("state-time-minus-time").disabled = false;
 	    document.getElementById("state-time-pay-button").disabled = false;
+	   	if(payment_time >= max_time) {
+	   		document.getElementById("state-time-plus-time").disabled = true;
+	   	}
 	}
 }, false);
 
@@ -36,6 +40,7 @@ document.getElementById("state-time-minus-time").addEventListener('click', funct
 	if((payment_time-payment_interval) >= 0) {
 	    payment_time -= payment_interval;
 	    document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
+	    document.getElementById("state-time-plus-time").disabled = false;
 	    if(payment_time == 0) {
 		    document.getElementById("state-time-minus-time").disabled = true;
 		    document.getElementById("state-time-pay-button").disabled = true;
