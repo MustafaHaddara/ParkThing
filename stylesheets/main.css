@@ -124,31 +124,3 @@ h1 {
 	flex-direction:column;
 }
 
-state-choose-payment {
-	display:none;
-}
-
-state-payment-cash {
-	display:none;
-}
-
-state-payment-card {
-	display:none;
-}
-
-state-log-in {
-	display:none;
-}
-
-state-account-new-ticket {
-	display:none;
-}
-
-state-account-existing-ticket {
-	display:none;
-}
-
-state-refund {
-	display:none;
-}
-
