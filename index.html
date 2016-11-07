@@ -8,7 +8,9 @@
 <body>
   <div id="flex-container">
     <div id="flex-row">
+    <!-- Touch Screen -->
       <div id="ui-container">
+        <!-- Initial State -->
         <div id="state-initial" class="expand">
         <h1> Ticket Machine </h1>
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
@@ -16,9 +18,32 @@
           <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start/Stop Prepaid Ticket</button>
           TODO: Time here
         </div>
+        <!-- Choose Time -->
         <div id="state-time" class="expand">
         </div>
+        <!-- Payment -->
+        <div id="state-choose-payment" class="expand">
+        </div>
+        <!-- Cash -->
+        <div id="state-payment-cash" class="expand">
+        </div>
+        <!-- Debit/Credit -->
+        <div id="state-payment-card" class="expand">
+        </div>
+        <!-- Log In -->
+        <div id="state-log-in" class="expand">
+        </div>
+        <!-- Logged In (Create New Ticket) -->
+        <div id="state-account-new-ticket" class="expand">
+        </div>
+        <!-- Logged In (Existing Ticket) -->
+        <div id="state-account-existing-ticket" class="expand">
+        </div>
+        <!-- Refund -->
+        <div id="state-refund" class="expand">
+        </div>
       </div>
+      <!-- Other Interface Elements -->
       <div id="coin-container">
         Coin and card thing here
       </div>
