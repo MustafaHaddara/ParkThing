@@ -125,7 +125,9 @@ h1 {
 }
 
 
-h2{
+/*state-log-in*/
+
+#state-log-in > h2{
 	margin: 0px;
 
 }
@@ -144,24 +146,14 @@ h2{
 }
 
 
-
-/*state-refund*/
-#state-refund {
-	display: flex;
-	flex-basis: 200pt;
-	flex-shrink: 2;
-	font-size: 36pt;
-}
-
-
 /*state declarations*/
 
-#state-log-in {
+#state-initial {
 	display: flex;
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-initial, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
+#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
 	display:none;
 	flex-direction:column;
 }
