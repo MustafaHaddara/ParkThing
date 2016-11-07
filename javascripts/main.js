@@ -2,6 +2,8 @@ var payment_time = 0;
 var max_time = 120;
 var payment_interval = 30;
 
+/*state-initial*/
+
 document.getElementById("state-initial-new-button").addEventListener('click', function() {
     document.getElementById("state-initial").style.display = "none";
 
@@ -18,6 +20,7 @@ document.getElementById("state-log-in").addEventListener('click', function() {
     document.getElementById("state-log-in").style.display = "flex";
 }, false);
 
+/*state-time*/
 
 document.getElementById("state-time-cancel-button").addEventListener('click', function() {
     document.getElementById("state-initial").style.display = "flex";
@@ -46,5 +49,10 @@ document.getElementById("state-time-minus-time").addEventListener('click', funct
 		    document.getElementById("state-time-pay-button").disabled = true;
 		}
 	}
+}, false);
+
+document.getElementById("state-time-pay-button").addEventListener('click', function() {
+	document.getElementById("state-time").style.display = "none";
+    document.getElementById("state-choose-payment").style.display = "flex";
 }, false);
 

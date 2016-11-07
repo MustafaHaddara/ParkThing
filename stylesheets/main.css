@@ -52,7 +52,8 @@ h1 {
 
 
 .button:active:not(:disabled){
-	box-shadow: inset 1px 1px 1px 1px;
+	box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.8);
+	color: #000000;
 }
 
 .green-button {
