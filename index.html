@@ -20,13 +20,18 @@
         </div>
         <!-- Choose Time -->
         <div id="state-time" class="expand">
+        <div class="flex-row">
+        <div id="state-time-exp-time">
+        0 minutes
+        </div>
+        </div>
           <div class="flex-row">
-          <button class="button time-button">&ndash;</button>
-            <button class="button time-button">+</button>
+          <button class="button time-button state-time-half-button blue-button" disabled>&ndash;30 min</button>
+            <button class="button time-button state-time-half-button blue-button">+30 min</button>
           </div>
           <div class="flex-row">
-            <button class="button red-button state-time-half-button">Cancel</button>
-            <button class="button green-button state-time-half-button">Pay Now</button>
+            <button id="state-time-cancel-button" class="button red-button state-time-half-button">Cancel</button>
+            <button class="button green-button state-time-half-button" disabled>Pay Now</button>
           </div>
         </div>
         <!-- Payment -->
