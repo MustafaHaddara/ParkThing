@@ -9,6 +9,7 @@ html, body {
 
 h1 {
 	margin: auto;
+	align-self: center;
 }
 
 #flex-container {
@@ -51,7 +52,8 @@ h1 {
 
 
 .button:active:not(:disabled){
-	box-shadow: inset 1px 1px 1px 1px;
+	box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.8);
+	color: #000000;
 }
 
 .green-button {
@@ -122,6 +124,7 @@ h1 {
 	/*width: 25pt;*/
 }
 
+
 h2{
 	margin: 0px;
 
@@ -138,6 +141,16 @@ h2{
 	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
 	align-content: center;
 
+}
+
+
+
+/*state-refund*/
+#state-refund {
+	display: flex;
+	flex-basis: 200pt;
+	flex-shrink: 2;
+	font-size: 36pt;
 }
 
 
