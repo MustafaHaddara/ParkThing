@@ -160,7 +160,7 @@ h1 {
 .state-time-half-button {
 	width: 45%;
 	margin:auto;
-	font-size: 24pt;
+	font-size: 28pt;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 }
@@ -174,14 +174,18 @@ h1 {
 }
 
 .time-button {
-	font-size: 24pt;
+	font-size: 28pt;
 	border-radius: 25pt;
 	/*width: 25pt;*/
 }
 
+.state-time-text-wrapper + .state-time-text-wrapper {
+	margin-top: 0;
+}
+
 .state-time-text-wrapper {
-	flex-grow:2;
-	font-size: 24pt;
+	flex-grow:1;
+	font-size: 36pt;
 	align-self: center;
 	margin:auto;
 	display:flex;
@@ -191,6 +195,7 @@ h1 {
 	align-items:center;
 	border: black solid 2pt;
 	width: 80%;
+	margin-top: 2pt;
 }
 
 .state-time-text-wrapper + .state-time-text-wrapper{
@@ -289,6 +294,11 @@ form {
 
 }
 
+#state-choose-payment > .flex-row >  h1 {
+	font-size: 40pt;
+	flex-grow: 1;
+}
+
 .state-choose-payment-sec-button {
 	width: 40%;
 	margin:auto;
@@ -298,6 +308,45 @@ form {
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
+}
+
+/* state-payment-card */
+ 
+#state-payment-card > .flex-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#state-payment-card-number {
+	height: 36pt;
+	flex-basis: 260pt;
+	font-size: 32pt;
+	text-align: center;
+	border: black solid 2px;
+}
+
+#state-payment-card > .flex-row > h1{
+	font-size: 36pt;
+	flex-grow: 1;
+	text-align: center;
+}
+
+.button-row {
+	flex-basis: 60pt;
+}
+
+.keypad-button {
+	font-size: 36pt;
+	flex-basis: 72pt;
+}
+
+.keypad-button + .keypad-button {
+	margin-left: 8pt;
+}
+
+.button-row{
+	margin-top: 8pt;
 }
 
 /*state declarations*/

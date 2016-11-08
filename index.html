@@ -17,7 +17,7 @@
         10:00
         </div>
         <div id="current-rate">
-        Rate: $0.30/30min
+        $0.30/30min
         </div></div>
         <div id="state-initial" class="expand">
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
@@ -72,32 +72,30 @@
         <!-- Debit/Credit -->
         <div id="state-payment-card" class="expand">
         <div class="flex-row">
-        Please swipe your card on the right or input your card number using the keypad.
+        <h1>Swipe Card or Enter Card Number</h1>
         </div>
         <div class="flex-row">
-          <span id="state-payment-card-number"></span>
+          <div id="state-payment-card-number"></div>
         </div>
-        <div class="flex-row">
-            <button id="state-payment-card-1" class="button red-button">1</button>
-            <button id="state-payment-card-2" class="button red-button">2</button>
-            <button id="state-payment-card-3" class="button red-button">3</button>
+        <div class="flex-row button-row">
+            <button id="state-payment-card-1" class="button keypad-button blue-button">1</button>
+            <button id="state-payment-card-2" class="button keypad-button blue-button">2</button>
+            <button id="state-payment-card-3" class="button keypad-button blue-button">3</button>
           </div>
-          <div class="flex-row">
-            <button id="state-payment-card-4" class="button red-button">4</button>
-            <button id="state-payment-card-5" class="button red-button">5</button>
-            <button id="state-payment-card-6" class="button red-button">6</button>
+          <div class="flex-row button-row">
+            <button id="state-payment-card-4" class="button keypad-button blue-button">4</button>
+            <button id="state-payment-card-5" class="button keypad-button blue-button">5</button>
+            <button id="state-payment-card-6" class="button keypad-button blue-button">6</button>
           </div>
-          <div class="flex-row">
-            <button id="state-payment-card-7" class="button red-button">7</button>
-            <button id="state-payment-card-8" class="button red-button">8</button>
-            <button id="state-payment-card-9" class="button red-button">9</button>
+          <div class="flex-row button-row">
+            <button id="state-payment-card-7" class="button keypad-button blue-button">7</button>
+            <button id="state-payment-card-8" class="button keypad-button blue-button">8</button>
+            <button id="state-payment-card-9" class="button keypad-button blue-button">9</button>
           </div>
-          <div class="flex-row">
-            <button id="state-payment-card-0" class="button red-button">0</button>
-          </div>
-          <div class="flex-row">
-            <button id="state-payment-card-0" class="button red-button">0</button>
-            <button id="state-payment-card-backspace" class="button red-button">&lt;</button>
+          <div class="flex-row button-row">
+            <div class="keypad-button"></div>
+            <button id="state-payment-card-0" class="button keypad-button blue-button">0</button>
+            <button id="state-payment-card-backspace" class="button keypad-button blue-button">&lt;</button>
           </div>
             <div class="flex-row">
             <button id="state-payment-card-back" class="button red-button state-time-half-button">Back</button>
