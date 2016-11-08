@@ -154,7 +154,7 @@ h1 {
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
+#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund, #state-printing {
 	display:none;
 	flex-direction:column;
 }
