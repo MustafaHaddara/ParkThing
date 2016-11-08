@@ -2,10 +2,25 @@
 /*Do noscript check*/
 /*Have hidden text to indicate CSS loading failure*/
 
+@media (max-width: 1366px), (max-height: 768px) {
+  #flex-container {
+  	height: 768px;
+  	width: 1366px;
+  }
+  #flex-container {
+  	margin:0 auto;
+  }
+}
+
+@media (min-width: 1367px) and (min-height: 769px) {
+  html,body, #flex-container {
+  	height: 100%;
+  }
+}
+
 html, body {
 	margin:0;
 	padding: 0;
-	height: 100%;
 }
 
 h1 {
@@ -48,8 +63,6 @@ h1 {
 #flex-container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: 100vh;
 }
 
 #flex-row {
@@ -76,6 +89,7 @@ h1 {
 #print-container {
 	background-color: #262F4C;
 	display: flex;
+	flex-direction: row;
 	flex-basis: 150px;
 	flex-grow: 1;
 }
@@ -241,8 +255,6 @@ form {
 	flex-shrink: 1;
 }
 
-/*state declarations*/
-
 /*state-choose-payment*/
 #state-choose-payment{
 	display: flex;
@@ -252,11 +264,12 @@ form {
 
 .state-choose-payment-prim-button {
 	width: 70%;
-	flex-basis: 200pt;
+	flex-basis: 100pt;
 	margin:auto;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	flex-shrink: 1;
+	flex-grow: 2;
 	font-size: 36pt;
 
 }
@@ -264,13 +277,15 @@ form {
 .state-choose-payment-sec-button {
 	width: 40%;
 	margin:auto;
-	flex-basis: 100pt;
+	flex-basis: 50pt;
 	flex-shrink:2;
+	flex-grow: 1;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
 }
 
+/*state declarations*/
 
 #state-initial {
 	display: flex;
@@ -286,11 +301,10 @@ form {
 #printer {
 	background-color: #808080;
 	color: #808080;
-	position: relative;
 	width: 40%;
-	height: 80px;
-	top: 40px;
-	left: 5%;
+	height: 80%;
+	margin-top: 10%;
+	margin-left: 5%;
 }
 
 #printer-slot {
