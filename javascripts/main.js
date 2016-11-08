@@ -49,12 +49,13 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
 });
 
 /*state-log-in*/
-document.getElementById('state-log-in-submit').addEventListener('click', function() {
+document.getElementById('state-log-in-submit').addEventListener('click', function(e) {
 	/*document.getElementById('state-account-existing-ticket').style.display = 'flex';
     document.getElementById('state-account-existing-ticket').disabled = false;
     document.getElementById('state-log-in').style.display = 'none';
     document.getElementById('state-log-in').disabled = true;
 	*/
+	e.preventDefault();
 	var username = document.getElementById('state-log-in-username').value;
 	if(username == 'test1'){
 		document.getElementById('state-account-new-ticket').style.display = 'flex';
