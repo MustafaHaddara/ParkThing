@@ -11,7 +11,6 @@ document.getElementById('current-time').innerText = (d.getHours().toString().len
 /*state-initial*/
 document.getElementById('state-initial-new-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
-
     payment_time = 0;
     var t = new Date(d.getTime() + payment_time*60000);
 		document.getElementById('state-time-exp-time').innerText = (t.getHours().toString().length < 2?'0':'') + t.getHours() + ':' + (t.getMinutes().toString().length < 2?'0':'') + t.getMinutes();
@@ -161,6 +160,7 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
 
 /* state-payment-coin */
 document.getElementById('state-payment-cash-back').addEventListener('click', function() {
+    coin_payment_count = 0;
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-cash').style.display = 'none';
     //TODO: Refund any coinage
@@ -288,18 +288,27 @@ window.requestAnimationFrame(timeUpdate);
 /*  Physical Coin-Slot */
 var coin_payment_increment = 10; // cents
 var coin_payment_count = 0;
-var coin_payment_unfinished = true;
 
 document.getElementById('coin-slot').addEventListener('click', function() {
-    if (coin_payment_unfinished) {
-        coin_payment_count++;
-        var l = (payment_time/30*price_per_interval);
-        var m = Math.floor(l/100);        
-        if ((l - m*100 - coin_payment_increment * coin_payment_count) == 0) {
-            coin_payment_unfinished = false;
-        }     
-        l = (l - m*100 - coin_payment_increment * coin_payment_count).toString();   
-        document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
-
-    }
+    coin_payment_count++;
+    var l = (payment_time/30*price_per_interval);
+    var m = Math.floor(l/100);        
+    if ((l - m*100 - coin_payment_increment * coin_payment_count) == 0) {
+        coin_payment_count = 0;
+        if(document.getElementById('state-payment-cash').style.display === 'flex') {
+            document.getElementById('state-payment-cash').style.display = 'none';
+            goToPrintingScreen('Transaction Approved. Printing Ticket...');
+            var selectedExpiryDate = new Date();
+            selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
+            selectedExpiryDate.setHours(selectedTime[0]);
+            selectedExpiryDate.setMinutes(selectedTime[1]);
+            printTicketWithTime(selectedExpiryDate, function() {
+                clearTicket();
+                document.getElementById('state-printing').style.display = 'none';
+                document.getElementById('state-initial').style.display = 'flex';
+            });
+        }
+    }     
+    l = (l - m*100 - coin_payment_increment * coin_payment_count).toString();   
+    document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
 }, false);
