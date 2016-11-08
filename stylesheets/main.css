@@ -257,6 +257,14 @@ form {
 	color: #000000;
 }
 
+.state-account-existing-logout {
+
+}
+
+.state-account-cancel-ticket {
+	
+}
+
 /*logged in*/
 #state-account-logout{
 	flex-shrink: 1;
