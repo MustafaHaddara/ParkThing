@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="width=1366,height=768">
   <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
   <title>ParkThing</title>
 </head>
@@ -11,11 +12,14 @@
       <!-- Touch Screen -->
       <div id="ui-container">
         <!-- Initial State -->
-        <span id="current-time">
+
+        <div class="flex-row"><div id="current-time">
         10:00
-        </span><br>
+        </div>
+        <div id="current-rate">
+        Rate: $0.30/30min
+        </div></div>
         <div id="state-initial" class="expand">
-          <h1> Ticket Machine </h1>
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
           <button id="state-initial-refund-button" class="button blue-button state-initial-sec-button">Refund Unused Minutes</button>
           <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start/Stop Prepaid Ticket</button>
@@ -52,9 +56,9 @@
         <div class="flex-row state-choose-payment">
         <h1> Please Select Method of Payment </h1>
         </div>
-            <button id="state-choose-payment-cash" class="button blue-button state-choose-payment-cash-button">Cash</button>
-            <button id="state-choose-payment-card" class="button green-button state-choose-payment-card-button">Debit/Credit Card</button>
-            <button id="state-choose-payment-back" class="button red-button state-choose-payment-back-button">Back</button>
+            <button id="state-choose-payment-cash" class="button green-button state-choose-payment-prim-button">Cash</button>
+            <button id="state-choose-payment-card" class="button green-button state-choose-payment-prim-button">Debit/Credit Card</button>
+            <button id="state-choose-payment-back" class="button red-button state-choose-payment-sec-button">Back</button>
         </div>
         <!-- Cash -->
         <div id="state-payment-cash" class="expand">

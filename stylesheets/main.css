@@ -2,10 +2,25 @@
 /*Do noscript check*/
 /*Have hidden text to indicate CSS loading failure*/
 
+@media (max-width: 1366px), (max-height: 768px) {
+  #flex-container {
+  	height: 768px;
+  	width: 1366px;
+  }
+  #flex-container {
+  	margin:0 auto;
+  }
+}
+
+@media (min-width: 1367px) and (min-height: 769px) {
+  html,body, #flex-container {
+  	height: 100%;
+  }
+}
+
 html, body {
 	margin:0;
 	padding: 0;
-	height: 100%;
 }
 
 h1 {
@@ -24,26 +39,37 @@ h1 {
 	background-color: #333333;
 }
 
-#current-time {
-	font-size: 16pt;
-	width:100%;
-	flex-shrink:1;
-	flex-grow:0;
+#ui-container > .flex-row {
+	display: flex;
 	border: black solid 1px;
+	font-size: 16pt;
+	color: #BAC4DF;
+}
+
+#current-time {
 	padding-left: 5pt;
+	flex-shrink: 1;
+	flex-grow:1;
+}
+
+#current-rate {
+	padding-right: 5pt;
+	margin-left:auto;
+	flex-shrink: 1;
+	flex-grow: 1;
+	text-align:right;
 }
 
 #flex-container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: 100vh;
 }
 
 #flex-row {
 	display:flex;
 	flex-basis: 80vh;
 	flex-grow: 5;
+	flex-direction: row;
 }
 
 #ui-container {
@@ -63,6 +89,7 @@ h1 {
 #print-container {
 	background-color: #262F4C;
 	display: flex;
+	flex-direction: row;
 	flex-basis: 150px;
 	flex-grow: 1;
 }
@@ -113,6 +140,7 @@ h1 {
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	flex-shrink: 1;
+	flex-grow: 2;
 	font-size: 36pt;
 
 }
@@ -122,6 +150,7 @@ h1 {
 	margin:auto;
 	flex-basis: 100pt;
 	flex-shrink:2;
+	flex-grow: 1;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
@@ -227,8 +256,6 @@ form {
 	flex-shrink: 1;
 }
 
-/*state declarations*/
-
 /*state-choose-payment*/
 #state-choose-payment{
 	display: flex;
@@ -236,37 +263,30 @@ form {
 	align-items:center;
 }
 
-.state-choose-payment-cash-button {
+.state-choose-payment-prim-button {
 	width: 70%;
-	flex-basis: 200pt;
+	flex-basis: 100pt;
 	margin:auto;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	flex-shrink: 2;
+	flex-shrink: 1;
+	flex-grow: 2;
 	font-size: 36pt;
 
 }
 
-.state-choose-payment-card-button {
-	width: 70%;
-	flex-basis: 200pt;
-	margin:auto;
-	margin-top: 15pt;
-	margin-bottom: 15pt;
-	flex-shrink: 2;
-	font-size: 36pt;
-}
-
-.state-choose-payment-back-button {
+.state-choose-payment-sec-button {
 	width: 40%;
 	margin:auto;
-	flex-basis: 100pt;
-	flex-shrink:1;
+	flex-basis: 50pt;
+	flex-shrink:2;
+	flex-grow: 1;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
 }
 
+/*state declarations*/
 
 #state-initial {
 	display: flex;
@@ -282,11 +302,10 @@ form {
 #printer {
 	background-color: #808080;
 	color: #808080;
-	position: relative;
-	width: 40%;
-	height: 80px;
-	top: 40px;
-	left: 5%;
+	flex-basis: 400px;
+	height: 60pt;
+	align-self: center;
+	margin-left: 30pt;
 }
 
 #printer-slot {
