@@ -53,7 +53,8 @@ h1 {
 
 
 .button:active:not(:disabled){
-	box-shadow: inset 1px 1px 1px 1px;
+	box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.8);
+	color: #000000;
 }
 
 .green-button {
@@ -124,13 +125,27 @@ h1 {
 	/*width: 25pt;*/
 }
 
-/*state-refund*/
-#state-refund {
-	display: flex;
-	flex-basis: 200pt;
-	flex-shrink: 2;
-	font-size: 36pt;
+
+/*state-log-in*/
+
+#state-log-in > h2{
+	margin: 0px;
+
 }
+
+.log-in-account-input{
+	background-color: #7284A8;
+	box-shadow: 2px 2px 2px 2px rgba(26, 33, 42, 0.80);
+	align-content: center;
+}
+
+.log-in-password-input{
+	background-color: #9E788F;
+	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
+	align-content: center;
+
+}
+
 
 /*state declarations*/
 
@@ -139,7 +154,7 @@ h1 {
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-payment-card, #state-log-in, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
+#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund {
 	display:none;
 	flex-direction:column;
 }

@@ -8,7 +8,7 @@
 <body>
   <div id="flex-container">
     <div id="flex-row">
-    <!-- Touch Screen -->
+      <!-- Touch Screen -->
       <div id="ui-container">
         <!-- Initial State -->
         <div id="state-initial" class="expand">
@@ -20,18 +20,18 @@
         </div>
         <!-- Choose Time -->
         <div id="state-time" class="expand">
-        <div class="flex-row">
-        <div id="state-time-exp-time">
-        0 minutes
-        </div>
-        </div>
           <div class="flex-row">
-          <button class="button time-button state-time-half-button blue-button" disabled>&ndash;30 min</button>
-            <button class="button time-button state-time-half-button blue-button">+30 min</button>
+            <div id="state-time-exp-time">
+              0 minutes
+            </div>
+          </div>
+          <div class="flex-row">
+            <button id="state-time-minus-time" class="button time-button state-time-half-button blue-button" disabled>&ndash;30 min</button>
+            <button id="state-time-plus-time" class="button time-button state-time-half-button blue-button">+30 min</button>
           </div>
           <div class="flex-row">
             <button id="state-time-cancel-button" class="button red-button state-time-half-button">Cancel</button>
-            <button class="button green-button state-time-half-button" disabled>Pay Now</button>
+            <button id="state-time-pay-button" class="button green-button state-time-half-button" disabled>Pay Now</button>
           </div>
         </div>
         <!-- Payment -->
@@ -45,12 +45,14 @@
         </div>
         <!-- Log In -->
         <div id="state-log-in" class="expand">
-          <h1>Log In</h1>
-          <form id="Log-In-Menu" class="">
-            <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Account Number:</button>
-            <button id="state-initial-prepaid-button" class="button red-button state-initial-sec-button">Password</button>
-            <button id="state-initial-prepaid-button" class="button green-button state-initial-prim-button">Log In</button>
-          </form>
+          <form id="login-info" class="login-info">  
+            <input type="text" id="state-log-in-account-num" class="log-in-account-input state-initial-prim-button" placeholder="Account Number">    
+            </input>
+            <input type="password" id="state-log-in-password" class="log-in-password-input state-initial-prim-button" placeholder="Password">
+            </input>
+            <button id="state-log-in-submit" class="button green-button state-initial-prim-button">Log In
+            </button>
+          </form> 
         </div>
         <!-- Logged In (Create New Ticket) -->
         <div id="state-account-new-ticket" class="expand">
@@ -60,7 +62,7 @@
         </div>
         <!-- Refund -->
         <div id="state-refund" class="expand">
-        <h1>Please insert ticket below</h1>
+          <h1>Please insert ticket below</h1>
         </div>
       </div>
       <!-- Other Interface Elements -->
