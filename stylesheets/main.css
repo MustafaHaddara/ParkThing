@@ -252,6 +252,12 @@ form {
 	color: #000000;
 }
 
+.button-remaining-time:disabled {
+	background-color: #7284A8;
+	box-shadow: 0 0 0 0 !important;
+	color: #000000;
+}
+
 /*logged in*/
 #state-account-logout{
 	flex-shrink: 1;

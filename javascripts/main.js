@@ -50,7 +50,8 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
 
 /*state-log-in*/
 document.getElementById('state-log-in-submit').addEventListener('click', function(e) {
-	/*document.getElementById('state-account-existing-ticket').style.display = 'flex';
+	/*
+	document.getElementById('state-account-existing-ticket').style.display = 'flex';
     document.getElementById('state-account-existing-ticket').disabled = false;
     document.getElementById('state-log-in').style.display = 'none';
     document.getElementById('state-log-in').disabled = true;
@@ -75,6 +76,14 @@ document.getElementById('state-log-in-cancel-button').addEventListener('click', 
     document.getElementById('state-log-in').style.display = 'none';
     document.getElementById('state-log-in').disabled = true;
 }, false);
+
+document.getElementById('state-account-logout').addEventListener('click', function() {
+    document.getElementById('state-initial').style.display = 'flex';
+    document.getElementById('state-account-new-ticket').style.display = 'none';
+    document.getElementById('state-account-new-ticket').disabled = true;
+}, false);
+
+
 
 /*state-time*/
 document.getElementById('state-time-cancel-button').addEventListener('click', function() {
