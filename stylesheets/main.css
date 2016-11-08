@@ -127,16 +127,6 @@ h1 {
 	font-size: 36pt;
 }
 
-.state-initial-ter-button {
-	width: 70%;
-	margin:auto;
-	flex-basis: 100pt;
-	flex-shrink:4;
-	margin-top: 15pt;
-	margin-bottom: 15pt;
-	font-size: 36pt;
-}
-
 /*state-time*/
 .state-time-half-button {
 	width: 45%;
