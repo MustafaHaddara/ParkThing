@@ -49,12 +49,59 @@
         </div>
         <!-- Payment -->
         <div id="state-choose-payment" class="expand">
+        <div class="flex-row">
+        Please Select Method of Payment
+        </div>
+          <div class="flex-row">
+            <button id="state-choose-payment-cash" class="button blue-button state-time-half-button">Cash</button>
+            <button id="state-choose-payment-card" class="button green-button state-time-half-button">Debit/Credit Card</button>
+          </div>
+          <div class="flex-row">
+            <button id="state-choose-payment-back" class="button red-button state-time-half-button">Back</button>
+          </div>
         </div>
         <!-- Cash -->
         <div id="state-payment-cash" class="expand">
+        <div class="flex-row">
+          Remaining: <span id="state-payment-cash-remaining">$0.00</span>
+          </div>
+          <div class="flex-row">
+            <button id="state-payment-cash-back" class="button red-button state-time-half-button">Back</button>
+          </div>
         </div>
         <!-- Debit/Credit -->
         <div id="state-payment-card" class="expand">
+        <div class="flex-row">
+        Please swipe your card on the right or input your card number using the keypad.
+        </div>
+        <div class="flex-row">
+          <span id="state-payment-card-number"></span>
+        </div>
+        <div class="flex-row">
+            <button id="state-payment-card-1" class="button red-button">1</button>
+            <button id="state-payment-card-2" class="button red-button">2</button>
+            <button id="state-payment-card-3" class="button red-button">3</button>
+          </div>
+          <div class="flex-row">
+            <button id="state-payment-card-4" class="button red-button">4</button>
+            <button id="state-payment-card-5" class="button red-button">5</button>
+            <button id="state-payment-card-6" class="button red-button">6</button>
+          </div>
+          <div class="flex-row">
+            <button id="state-payment-card-7" class="button red-button">7</button>
+            <button id="state-payment-card-8" class="button red-button">8</button>
+            <button id="state-payment-card-9" class="button red-button">9</button>
+          </div>
+          <div class="flex-row">
+            <button id="state-payment-card-0" class="button red-button">0</button>
+          </div>
+          <div class="flex-row">
+            <button id="state-payment-card-0" class="button red-button">0</button>
+            <button id="state-payment-card-backspace" class="button red-button">&lt;</button>
+          </div>
+            <div class="flex-row">
+            <button id="state-payment-card-back" class="button red-button state-time-half-button">Back</button>
+          </div>
         </div>
         <!-- Log In -->
         <div id="state-log-in" class="expand">
@@ -87,7 +134,14 @@
       </div>
       <!-- Other Interface Elements -->
       <div id="coin-container">
-        Coin and card thing here
+        <div id="card-slot">
+        &nbsp;
+        </div>
+        <div id="coin-slot">
+        &nbsp;
+        </div>
+        <div id="coin-depositer">
+        </div>
       </div>
     </div>
     <div id="print-container">

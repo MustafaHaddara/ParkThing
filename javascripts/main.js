@@ -121,7 +121,55 @@ document.getElementById("state-time-pay-button").addEventListener('click', funct
     document.getElementById("state-choose-payment").style.display = "flex";
 }, false);
 
+/* state-choose-payment */
+document.getElementById("state-choose-payment-back").addEventListener('click', function() {
+    document.getElementById("state-time").style.display = "flex";
+    document.getElementById("state-choose-payment").style.display = "none";
+    //TODO: Refund any coinage
+}, false);
+
+document.getElementById("state-choose-payment-card").addEventListener('click', function() {
+    document.getElementById("state-payment-card").style.display = "flex";
+    document.getElementById("state-choose-payment").style.display = "none";
+}, false);
+
+document.getElementById("state-choose-payment-cash").addEventListener('click', function() {
+	var l = (payment_time/30*price_per_interval);
+    var m = Math.floor(l/100);
+    l = (l - m*100).toString();
+    document.getElementById("state-payment-cash-remaining").innerText = "$" + m + "." + l + (l.length < 2? "0":"");
+    document.getElementById("state-payment-cash").style.display = "flex";
+    document.getElementById("state-choose-payment").style.display = "none";
+}, false);
+
+/* state-payment-coin */
+document.getElementById("state-payment-cash-back").addEventListener('click', function() {
+    document.getElementById("state-choose-payment").style.display = "flex";
+    document.getElementById("state-payment-cash").style.display = "none";
+    //TODO: Refund any coinage
+}, false);
+
+/* state-payment-card */
+document.getElementById("state-payment-card-back").addEventListener('click', function() {
+    document.getElementById("state-choose-payment").style.display = "flex";
+    document.getElementById("state-payment-card").style.display = "none";
+    //TODO: Refund any coinage
+}, false);
+
+document.getElementById("card-slot").addEventListener('click', function() {
+	if(document.getElementById("state-payment-card").style.display === "flex") {
+		document.getElementById("state-payment-card").style.display = "none";
+		goToPrintingScreen("Transaction Approved. Printing Ticket...");
+		printTicket("Hi", function() {
+			clearTicket();
+			document.getElementById('state-printing').style.display = 'none';
+			document.getElementById('state-initial').style.display = "flex";
+		});
+	}
+}, false);
+
 /*state-refund*/
+
 document.getElementById('state-refund-cancel-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'flex';
     document.getElementById('state-refund').style.display = 'none';

@@ -13,6 +13,17 @@ h1 {
 	align-self: center;
 }
 
+#card-slot {
+	width: 80%;
+	height: 300px;
+	background-color: #000000;
+}
+#coin-slot {
+	width: 80%;
+	height: 50px;
+	background-color: #333333;
+}
+
 #current-time {
 	font-size: 16pt;
 	width:100%;
@@ -203,6 +214,19 @@ form {
 
 
 /*state declarations*/
+
+/*state-choose-payment*/
+#state-choose-payment > .flex-row {
+	display:flex;
+	flex-direction:row;
+	align-content: space-around;
+	flex-grow:0;
+	flex-basis: 20pt;
+}
+
+#state-choose-payment{
+	align-content: space-around;
+}
 
 
 #state-initial {
