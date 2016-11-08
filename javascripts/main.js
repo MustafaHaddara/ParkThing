@@ -83,6 +83,12 @@ document.getElementById('state-account-logout').addEventListener('click', functi
     document.getElementById('state-account-new-ticket').disabled = true;
 }, false);
 
+document.getElementById('state-account-logout-existing').addEventListener('click', function() {
+    document.getElementById('state-initial').style.display = 'flex';
+    document.getElementById('state-account-existing-ticket').style.display = 'none';
+    document.getElementById('state-account-existing-ticket').disabled = true;
+}, false);
+
 
 
 /*state-time*/
