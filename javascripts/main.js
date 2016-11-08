@@ -164,6 +164,11 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
 document.getElementById('state-payment-card-back').addEventListener('click', function() {
 	card_num = "";
     document.getElementById('state-payment-card-number').innerText = card_num;
+    if(card_num.length == 16) {
+		document.getElementById('state-payment-card-process').disabled = false;
+	} else {
+		document.getElementById('state-payment-card-process').disabled = true;
+	}
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-card').style.display = 'none';
 }, false);
@@ -194,9 +199,24 @@ for (var  i = 0; i < keypad_buttons.length; i ++) {
 		} else if(card_num.length > 0){
 			card_num = card_num.slice(0, card_num.length-1);
 		}
-		document.getElementById('state-payment-card-number').innerText = card_num;
 	}, false);
 }
+
+document.getElementById('state-payment-card-process').addEventListener('click', function() {
+	if (card_num === "6555123456789012") {
+		document.getElementById('state-payment-card').style.display = 'none';
+		goToPrintingScreen('Transaction Approved. Printing Ticket...');
+        var selectedExpiryDate = new Date();
+        selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
+        selectedExpiryDate.setHours(selectedTime[0]);
+        selectedExpiryDate.setMinutes(selectedTime[1]);
+		printTicketWithTime(selectedExpiryDate, function() {
+			clearTicket();
+			document.getElementById('state-printing').style.display = 'none';
+			document.getElementById('state-initial').style.display = 'flex';
+		});
+	}
+}, false);
 
 /*state-refund*/
 document.getElementById('state-refund-cancel-button').addEventListener('click', function() {
@@ -273,7 +293,12 @@ function timeUpdate() {
 		var t = new Date(d.getTime() + payment_time*60000);
 		document.getElementById('state-time-exp-time').innerText = (t.getHours().toString().length < 2?'0':'') + t.getHours() + ':' + (t.getMinutes().toString().length < 2?'0':'') + t.getMinutes();
 	}
-
+	if(card_num.length == 16) {
+		document.getElementById('state-payment-card-process').disabled = false;
+	} else {
+		document.getElementById('state-payment-card-process').disabled = true;
+	}
+	document.getElementById('state-payment-card-number').innerText = card_num;
 	window.requestAnimationFrame(timeUpdate);
 }
 

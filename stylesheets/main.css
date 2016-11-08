@@ -312,15 +312,34 @@ form {
 
 /* state-payment-card */
  
-#state-payment-card > .flex-row {
+#state-payment-card > .keypad-container > .flex-row {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
 
+#state-payment-card > .flex-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+
+#state-payment-card{
+	align-content: space-around;
+	align-self: space-around;
+}
+
+#state-payment-card > .keypad-container {
+	justify-content: center;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+
 #state-payment-card-number {
 	height: 36pt;
-	flex-basis: 260pt;
+	flex-basis: 270pt;
 	font-size: 32pt;
 	text-align: center;
 	border: black solid 2px;
