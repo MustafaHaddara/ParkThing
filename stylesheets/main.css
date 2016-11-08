@@ -231,16 +231,41 @@ form {
 /*state declarations*/
 
 /*state-choose-payment*/
-#state-choose-payment > .flex-row {
-	display:flex;
-	flex-direction:row;
-	align-content: space-around;
-	flex-grow:0;
-	flex-basis: 20pt;
+#state-choose-payment{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
 }
 
-#state-choose-payment{
-	align-content: space-around;
+.state-choose-payment-cash-button {
+	width: 70%;
+	flex-basis: 200pt;
+	margin:auto;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	flex-shrink: 2;
+	font-size: 36pt;
+
+}
+
+.state-choose-payment-card-button {
+	width: 70%;
+	flex-basis: 200pt;
+	margin:auto;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	flex-shrink: 2;
+	font-size: 36pt;
+}
+
+.state-choose-payment-back-button {
+	width: 40%;
+	margin:auto;
+	flex-basis: 100pt;
+	flex-shrink:1;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	font-size: 36pt;
 }
 
 
