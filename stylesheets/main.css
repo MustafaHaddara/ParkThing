@@ -24,13 +24,25 @@ h1 {
 	background-color: #333333;
 }
 
-#current-time {
-	font-size: 16pt;
-	width:100%;
-	flex-shrink:1;
-	flex-grow:0;
+#ui-container > .flex-row {
+	display: flex;
 	border: black solid 1px;
+	font-size: 16pt;
+	color: #A9B3CE;
+}
+
+#current-time {
 	padding-left: 5pt;
+	flex-shrink: 1;
+	flex-grow:1;
+}
+
+#current-rate {
+	padding-right: 5pt;
+	margin-left:auto;
+	flex-shrink: 1;
+	flex-grow: 1;
+	text-align:right;
 }
 
 #flex-container {
@@ -44,6 +56,7 @@ h1 {
 	display:flex;
 	flex-basis: 80vh;
 	flex-grow: 5;
+	flex-direction: row;
 }
 
 #ui-container {
