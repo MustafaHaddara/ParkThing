@@ -303,12 +303,10 @@ form {
 #printer {
 	background-color: #808080;
 	color: #808080;
-	/*width: 40%;
-	height: 80%;*/
 	flex-basis: 400px;
-	margin-top: 10%;
-	margin-bottom: 10%;
-	margin-left: 5%;
+	height: 60pt;
+	align-self: center;
+	margin-left: 30pt;
 }
 
 #printer-slot {
