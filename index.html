@@ -106,13 +106,16 @@
         <!-- Log In -->
         <div id="state-log-in" class="expand">
           <form id="login-form" class="login-info">  
-            <input type="text" id="state-log-in-account-num" class="log-in-account-input state-initial-prim-button" placeholder="Account Number">    
-            </input>
-            <input type="password" id="state-log-in-password" class="log-in-password-input state-initial-prim-button" placeholder="Password">
-            </input>
+            <div class="flex-row">
+              <input type="text" id="state-log-in-username" class="log-in-username-input state-initial-prim-button" placeholder="Username">
+              </input>
+              <input type="password" id="state-log-in-password" class="log-in-password-input state-initial-prim-button" placeholder="Password">
+              </input>
+
+              <button id="state-log-in-submit" class="button green-button state-initial-prim-button">Log In</button>
+              <button id="state-log-in-cancel-button" class="button red-button state-time-half-button">Cancel</button>
+            </div>
           </form> 
-            <button id="state-log-in-submit" class="button green-button state-initial-prim-button">Log In</button>
-            <button id="state-log-in-cancel-button" class="button red-button state-time-half-button">Cancel</button>
         </div>
         <!-- Logged In (Create New Ticket) -->
         <div id="state-account-new-ticket" class="expand">

@@ -55,7 +55,7 @@ document.getElementById('state-log-in-submit').addEventListener('click', functio
     document.getElementById('state-log-in').style.display = 'none';
     document.getElementById('state-log-in').disabled = true;
 	*/
-	var username = document.getElementById('state-log-in-account-num').value;
+	var username = document.getElementById('state-log-in-username').value;
 	if(username == 'test1'){
 		document.getElementById('state-account-new-ticket').style.display = 'flex';
     	document.getElementById('state-account-new-ticket').disabled = false;
