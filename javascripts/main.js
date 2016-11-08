@@ -3,6 +3,8 @@ var max_time = 120;
 var payment_interval = 30;
 var price_per_interval = 30; // In cents
 
+var card_num = "";
+
 var d = new Date();
 document.getElementById('current-time').innerText = (d.getHours().toString().length < 2?'0':'') + d.getHours() + ':' + (d.getMinutes().toString().length < 2?'0':'') + d.getMinutes();
 
@@ -151,9 +153,10 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
 
 /* state-payment-card */
 document.getElementById('state-payment-card-back').addEventListener('click', function() {
+	card_num = "";
+    document.getElementById('state-payment-card-number').innerText = card_num;
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-card').style.display = 'none';
-    //TODO: Refund any coinage
 }, false);
 
 document.getElementById('card-slot').addEventListener('click', function() {
@@ -167,6 +170,20 @@ document.getElementById('card-slot').addEventListener('click', function() {
 		});
 	}
 }, false);
+
+var keypad_buttons = document.getElementsByClassName('keypad-button');
+for (var  i = 0; i < keypad_buttons.length; i ++) {
+	keypad_buttons[i].addEventListener('click', function(e) {
+		if (e.currentTarget.innerText !== '<') {
+			if(card_num.length < 16) {
+				card_num += e.currentTarget.innerText;
+			}
+		} else if(card_num.length > 0){
+			card_num = card_num.slice(0, card_num.length-1);
+		}
+		document.getElementById('state-payment-card-number').innerText = card_num;
+	}, false);
+}
 
 /*state-refund*/
 document.getElementById('state-refund-cancel-button').addEventListener('click', function() {
