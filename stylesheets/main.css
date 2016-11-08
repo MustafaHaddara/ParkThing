@@ -95,6 +95,7 @@ h1 {
 .button:disabled {
 	background-color:#A9B3CE;
 	box-shadow: 0 0 0 0 !important;
+
 }
 
 .expand {
@@ -210,6 +211,13 @@ form {
 	align-self: center center;
 }
 
+.button-balance:disabled {
+	background-color:#87CE67;
+	box-shadow: 0 0 0 0 !important;
+	color: #000000;
+
+	
+}
 
 /*state declarations*/
 
