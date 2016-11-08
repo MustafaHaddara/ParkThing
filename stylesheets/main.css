@@ -111,7 +111,7 @@ h1 {
 	margin:auto;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	flex-shrink: 2;
+	flex-shrink: 1;
 	font-size: 36pt;
 
 }
@@ -120,7 +120,17 @@ h1 {
 	width: 70%;
 	margin:auto;
 	flex-basis: 100pt;
-	flex-shrink:1;
+	flex-shrink:2;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	font-size: 36pt;
+}
+
+.state-initial-ter-button {
+	width: 70%;
+	margin:auto;
+	flex-basis: 100pt;
+	flex-shrink:4;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
@@ -201,6 +211,7 @@ form {
 	background-color: #7284A8;
 	color: white;
 	box-shadow: 2px 2px 2px 2px rgba(26, 33, 42, 0.80);
+	display: block;
 }
 
 .log-in-password-input{
@@ -208,6 +219,11 @@ form {
 	color: white;
 	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
 	align-self: center center;
+	display: block;
+}
+
+.log-in-flex-row > button {
+	display: block;
 }
 
 
