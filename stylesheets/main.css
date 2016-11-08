@@ -28,7 +28,7 @@ h1 {
 	display: flex;
 	border: black solid 1px;
 	font-size: 16pt;
-	color: #A9B3CE;
+	color: #BAC4DF;
 }
 
 #current-time {
@@ -250,32 +250,22 @@ form {
 	align-items:center;
 }
 
-.state-choose-payment-cash-button {
+.state-choose-payment-prim-button {
 	width: 70%;
 	flex-basis: 200pt;
 	margin:auto;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	flex-shrink: 2;
+	flex-shrink: 1;
 	font-size: 36pt;
 
 }
 
-.state-choose-payment-card-button {
-	width: 70%;
-	flex-basis: 200pt;
-	margin:auto;
-	margin-top: 15pt;
-	margin-bottom: 15pt;
-	flex-shrink: 2;
-	font-size: 36pt;
-}
-
-.state-choose-payment-back-button {
+.state-choose-payment-sec-button {
 	width: 40%;
 	margin:auto;
 	flex-basis: 100pt;
-	flex-shrink:1;
+	flex-shrink:2;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 	font-size: 36pt;
