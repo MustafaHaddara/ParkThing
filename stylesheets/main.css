@@ -5,6 +5,7 @@
 html, body {
 	margin:0;
 	padding: 0;
+	height: 100%;
 }
 
 h1 {
@@ -39,7 +40,7 @@ h1 {
 }
 
 #print-container {
-	background-color: #0000FF;
+	background-color: #262F4C;
 	display: flex;
 	flex-basis: 150px;
 	flex-grow: 1;
@@ -143,3 +144,36 @@ h1 {
 	flex-direction:column;
 }
 
+/*printer*/
+#printer {
+	background-color: #808080;
+	color: #808080;
+	position: relative;
+	width: 40%;
+	height: 80px;
+	top: 40px;
+	left: 5%;
+}
+
+#printer-slot {
+	background-color: #666666;
+	min-height: 20%;
+	position: relative;
+	top: 40%;
+	width: 90%;
+	left: 5%;
+}
+
+#printer-ticket {
+	display: none; /*turn this off to show the ticket*/
+	background-color: #ffffff;
+	position: relative;
+	margin: 10px;
+	width: 400px;
+	left: 100px;
+	top: 15px;
+}
+
+#printer-ticket-time {
+	display: inline;
+}
