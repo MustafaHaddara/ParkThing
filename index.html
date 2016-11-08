@@ -11,20 +11,33 @@
       <!-- Touch Screen -->
       <div id="ui-container">
         <!-- Initial State -->
+        <span id="current-time">
+        10:00
+        </span><br>
         <div id="state-initial" class="expand">
           <h1> Ticket Machine </h1>
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
           <button id="state-initial-refund-button" class="button red-button state-initial-sec-button">Refund Unused Minutes</button>
           <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start/Stop Prepaid Ticket</button>
-          TODO: Time here
         </div>
         <!-- Choose Time -->
         <div id="state-time" class="expand">
-          <div class="flex-row">
-            <div id="state-time-exp-time">
+          <div class="state-time-text-wrapper">
+          <span>
+            Expires:
+          </span> 
+            <span id="state-time-exp-time">
               0 minutes
-            </div>
+            </span>
           </div>
+          <div class="state-time-text-wrapper">
+          <span>
+            Price:
+          </span>
+            <span id="state-time-price">
+              $0.00
+            </span>
+            </div>
           <div class="flex-row">
             <button id="state-time-minus-time" class="button time-button state-time-half-button blue-button" disabled>&ndash;30 min</button>
             <button id="state-time-plus-time" class="button time-button state-time-half-button blue-button">+30 min</button>

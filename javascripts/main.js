@@ -1,6 +1,10 @@
 var payment_time = 0;
 var max_time = 120;
 var payment_interval = 30;
+var price_per_interval = 30; // In cents
+
+var d = new Date();
+document.getElementById("current-time").innerText = (d.getHours().toString().length < 2?"0":"") + d.getHours() + ":" + (d.getMinutes().toString().length < 2?"0":"") + d.getMinutes();
 
 /*state-initial*/
 
@@ -8,7 +12,12 @@ document.getElementById("state-initial-new-button").addEventListener('click', fu
     document.getElementById("state-initial").style.display = "none";
 
     payment_time = 0;
-    document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
+    var t = new Date(d.getTime() + payment_time*60000);
+		document.getElementById("state-time-exp-time").innerText = (t.getHours().toString().length < 2?"0":"") + t.getHours() + ":" + (t.getMinutes().toString().length < 2?"0":"") + t.getMinutes();
+    var l = (payment_time/30*price_per_interval);
+    var m = Math.floor(l/100);
+    l = (l - m*100).toString();
+    document.getElementById("state-time-price").innerText = "$" + m + "." + l + (l.length < 2? "0":"");
     document.getElementById("state-time-minus-time").disabled = true;
     document.getElementById("state-time-plus-time").disabled = false;
     document.getElementById("state-time-pay-button").disabled = true;
@@ -76,8 +85,13 @@ document.getElementById("state-time-cancel-button").addEventListener('click', fu
 document.getElementById("state-time-plus-time").addEventListener('click', function() {
 	if ((payment_time+payment_interval) <= max_time){
 	    payment_time += payment_interval;
-	    document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
-	    document.getElementById("state-time-minus-time").disabled = false;
+	    var t = new Date(d.getTime() + payment_time*60000);
+		document.getElementById("state-time-exp-time").innerText = (t.getHours().toString().length < 2?"0":"") + t.getHours() + ":" + (t.getMinutes().toString().length < 2?"0":"") + t.getMinutes();
+	    var l = (payment_time/30*price_per_interval);
+	    var m = Math.floor(l/100);
+	    l = (l - m*100).toString();
+	    document.getElementById("state-time-price").innerText = "$" + m + "." + l + (l.length < 2? "0":"");
+		    document.getElementById("state-time-minus-time").disabled = false;
 	    document.getElementById("state-time-pay-button").disabled = false;
 	   	if(payment_time >= max_time) {
 	   		document.getElementById("state-time-plus-time").disabled = true;
@@ -88,7 +102,12 @@ document.getElementById("state-time-plus-time").addEventListener('click', functi
 document.getElementById("state-time-minus-time").addEventListener('click', function() {
 	if((payment_time-payment_interval) >= 0) {
 	    payment_time -= payment_interval;
-	    document.getElementById("state-time-exp-time").innerText = payment_time+" minutes.";
+	   var t = new Date(d.getTime() + payment_time*60000);
+		document.getElementById("state-time-exp-time").innerText = (t.getHours().toString().length < 2?"0":"") + t.getHours() + ":" + (t.getMinutes().toString().length < 2?"0":"") + t.getMinutes();
+	    var l = (payment_time/30*price_per_interval);
+	    var m = Math.floor(l/100);
+	    l = (l - m*100).toString();
+	    document.getElementById("state-time-price").innerText = "$" + m + "." + l + (l.length < 2? "0":"");
 	    document.getElementById("state-time-plus-time").disabled = false;
 	    if(payment_time == 0) {
 		    document.getElementById("state-time-minus-time").disabled = true;
@@ -150,3 +169,18 @@ function clearTicket() {
     document.getElementById('printer-ticket').style.display = 'none';
     document.getElementById('printer-ticket').innerHTML = '';
 }
+
+function time_update() {
+	var a = new Date();
+	var time_changed = d.getHours() != a.getHours() || d.getMinutes() != a.getMinutes();
+	if (time_changed) {
+		d = a;
+		document.getElementById("current-time").innerText = (d.getHours().toString().length < 2?"0":"") + d.getHours() + ":" + (d.getMinutes().toString().length < 2?"0":"") + d.getMinutes();
+		var t = new Date(d.getTime() + payment_time*60000);
+		document.getElementById("state-time-exp-time").innerText = (t.getHours().toString().length < 2?"0":"") + t.getHours() + ":" + (t.getMinutes().toString().length < 2?"0":"") + t.getMinutes();
+	}
+
+	window.requestAnimationFrame(time_update);
+}
+
+window.requestAnimationFrame(time_update);

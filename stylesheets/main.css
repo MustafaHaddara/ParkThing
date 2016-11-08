@@ -13,6 +13,15 @@ h1 {
 	align-self: center;
 }
 
+#current-time {
+	font-size: 16pt;
+	width:100%;
+	flex-shrink:1;
+	flex-grow:0;
+	border: black solid 1px;
+	padding-left: 5pt;
+}
+
 #flex-container {
 	display: flex;
 	flex-direction: column;
@@ -31,6 +40,7 @@ h1 {
 	display: flex;
 	flex-basis: 300px;
 	flex-grow: 50;
+	flex-direction:column;
 }
 #coin-container {
 	background-color: #00FF00;
@@ -110,6 +120,9 @@ h1 {
 	width: 45%;
 	margin:auto;
 	font-size: 24pt;
+	margin-top: 15pt;
+	margin-bottom: 15pt;
+	height: 80%;
 }
 
 #state-time > .flex-row {
@@ -117,12 +130,44 @@ h1 {
 	flex-direction:row;
 	align-content: space-around;
 	flex-grow:1;
+	flex-basis: 20pt;
 }
 
 .time-button {
 	font-size: 24pt;
 	border-radius: 25pt;
 	/*width: 25pt;*/
+}
+
+.state-time-text-wrapper {
+	flex-grow:2;
+	font-size: 24pt;
+	align-self: center;
+	margin:auto;
+	display:flex;
+	flex-direction:row;
+	align-content:center;
+	justify-content: center;
+	align-items:center;
+	border: black solid 2pt;
+	width: 80%;
+}
+
+.state-time-text-wrapper + .state-time-text-wrapper{
+	border-top: none;
+}
+.state-time-text-wrapper > span {
+	margin-right: 5pt;
+}
+.state-time-text-wrapper > span + span {
+	margin-right: 0;
+}
+}
+
+#state-time-exp-time {
+}
+
+#state-time-price {
 }
 
 
@@ -152,7 +197,7 @@ form {
 	background-color: #9E788F;
 	color: white;
 	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
-	align-self: center;
+	align-self: center center;
 
 }
 
