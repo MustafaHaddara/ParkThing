@@ -284,3 +284,22 @@ function timeUpdate() {
 }
 
 window.requestAnimationFrame(timeUpdate);
+
+/*  Physical Coin-Slot */
+var coin_payment_increment = 10; // cents
+var coin_payment_count = 0;
+var coin_payment_unfinished = true;
+
+document.getElementById('coin-slot').addEventListener('click', function() {
+    if (coin_payment_unfinished) {
+        coin_payment_count++;
+        var l = (payment_time/30*price_per_interval);
+        var m = Math.floor(l/100);        
+        if ((l - m*100 - coin_payment_increment * coin_payment_count) == 0) {
+            coin_payment_unfinished = false;
+        }     
+        l = (l - m*100 - coin_payment_increment * coin_payment_count).toString();   
+        document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
+
+    }
+}, false);
