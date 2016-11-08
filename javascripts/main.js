@@ -33,7 +33,7 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
     document.getElementById('state-refund').style.display = 'flex';
-    printTicket('Ticket Thursday Nov 7 2016<br>Valid Until 10:30AM', function() {
+    printTicketWithTime(new Date(), function() {
         document.getElementById('state-refund').style.display = 'none';
         document.getElementById('printer-ticket').style.display = 'none';
         goToPrintingScreen('Now printing voucher, please wait');
@@ -169,7 +169,11 @@ document.getElementById('card-slot').addEventListener('click', function() {
 	if(document.getElementById('state-payment-card').style.display === 'flex') {
 		document.getElementById('state-payment-card').style.display = 'none';
 		goToPrintingScreen('Transaction Approved. Printing Ticket...');
-		printTicket('Hi', function() {
+        var selectedExpiryDate = new Date();
+        selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
+        selectedExpiryDate.setHours(selectedTime[0]);
+        selectedExpiryDate.setMinutes(selectedTime[1]);
+		printTicketWithTime(selectedExpiryDate, function() {
 			clearTicket();
 			document.getElementById('state-printing').style.display = 'none';
 			document.getElementById('state-initial').style.display = 'flex';
@@ -203,6 +207,38 @@ function printTicket(text, callback) {
             callback();
         }
     };
+}
+
+/*print parking ticket with specific time*/
+function printTicketWithTime(dateTime, callback) {
+    var time = getTime(dateTime);
+    var date = getDate(dateTime);
+    printTicket('<h1>EXPIRES: ' + time + '</h1><br><h1>Ticket ' + date + '</h1>', callback);
+}
+
+/*pull a formatted time out of the Date() object*/
+function getTime(date) {
+    var hours = leftPad(date.getHours().toString(), '0', 2);
+    var mins = leftPad(date.getMinutes().toString(), '0', 2);
+    return hours + ':' + mins;
+}
+
+/*pull a formatted date out of the Date() object*/
+function getDate(date) {
+    day = leftPad(date.getDate().toString(), '0', 2);
+    month = leftPad((date.getMonth() + 1), '0', 2);
+    year = date.getFullYear();
+
+    return day + '/' + month + '/' + year;
+}
+
+/*don't use npm*/
+function leftPad(str, ext, len) {
+    var res = str + ''; // make sure it's a string
+    while (res.length < len) {
+        res = ext + res;
+    }
+    return res;
 }
 
 /*hide the "physical" printout*/

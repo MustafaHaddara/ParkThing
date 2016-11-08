@@ -163,7 +163,6 @@ h1 {
 	font-size: 24pt;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	height: 80%;
 }
 
 #state-time > .flex-row {
@@ -328,10 +327,10 @@ form {
 	display: none; /*turn this off to show the ticket*/
 	background-color: #ffffff;
 	position: relative;
-	margin: 10px;
 	width: 400px;
 	left: 100px;
 	top: 15px;
+	padding: 1% 2%;
 }
 
 #printer-ticket-time {
