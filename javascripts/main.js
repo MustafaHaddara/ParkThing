@@ -15,9 +15,38 @@ document.getElementById("state-initial-new-button").addEventListener('click', fu
     document.getElementById("state-time").style.display = "flex";
 }, false);
 
-document.getElementById("state-log-in").addEventListener('click', function() {
+document.getElementById("state-initial-prepaid-button").addEventListener('click', function() {
     document.getElementById("state-initial").style.display = "none";
+    document.getElementById("state-log-in").disabled = false;
+    document.getElementById("state-initial").disabled = true;
     document.getElementById("state-log-in").style.display = "flex";
+}, false);
+
+
+document.getElementById("state-log-in-submit").addEventListener('click', function() {
+	/*document.getElementById("state-account-existing-ticket").style.display = "flex";
+    document.getElementById("state-account-existing-ticket").disabled = false;
+    document.getElementById("state-log-in").style.display = "none";
+    document.getElementById("state-log-in").disabled = true;
+	*/
+	var username = document.getElementById("state-log-in-account-num").value;
+	if(username == "test1"){
+		document.getElementById("state-account-new-ticket").style.display = "flex";
+    	document.getElementById("state-account-new-ticket").disabled = false;
+    	document.getElementById("state-log-in").style.display = "none";
+    	document.getElementById("state-log-in").disabled = true;
+	} else if(username == "test2"){
+		document.getElementById("state-account-existing-ticket").style.display = "flex";
+    	document.getElementById("state-account-existing-ticket").disabled = false;
+    	document.getElementById("state-log-in").style.display = "none";
+    	document.getElementById("state-log-in").disabled = true;
+	}
+}, false);
+
+document.getElementById("state-log-in-cancel-button").addEventListener('click', function() {
+    document.getElementById("state-initial").style.display = "flex";
+    document.getElementById("state-log-in").style.display = "none";
+    document.getElementById("state-log-in").disabled = true;
 }, false);
 
 /*state-time*/
@@ -55,4 +84,26 @@ document.getElementById("state-time-pay-button").addEventListener('click', funct
 	document.getElementById("state-time").style.display = "none";
     document.getElementById("state-choose-payment").style.display = "flex";
 }, false);
+
+/* on click functions for prepaid tickets */
+
+function state_account_submission(username){
+	if (username == "test1"){
+		document.getElementById("state-log-in").disabled = true;
+    	document.getElementById("state-account-new-ticket").disabled = false;
+    	document.getElementById("state-account-new-ticket").style.display = "flex";
+    	document.getElementById("state-account-existing-ticket").disabled = true;
+    	return true;
+	} else if (username = "test2"){
+		document.getElementById("state-log-in").disabled = true;
+    	document.getElementById("state-account-existing-ticket").disabled = false;
+    	document.getElementById("state-account-existing-ticket").style.display = "flex";
+    	document.getElementById("state-account-new-ticket").disabled = true;
+    	return true;
+	} else {
+		return false;
+	}
+
+
+}
 
