@@ -364,6 +364,7 @@ form {
 }
 
 #state-payment-card-error > div{
+	border-radius: 10pt;
 	background-color: #9E788F;
 	text-align: center;
 	vertical-align: middle;
