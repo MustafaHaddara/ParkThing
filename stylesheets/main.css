@@ -76,14 +76,13 @@ h1 {
 	flex-grow: 1;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-around;
 }
 
 #coin-container {
 	width: 80%;
 	height: 6%;
 	background-color: #808080;
-	margin-top: 50%;
-	margin-bottom: 50%;
 }
 
 #coin-slot {
@@ -359,12 +358,56 @@ form {
 	flex-grow: 1;
 }
 
+#state-payment-card-non-flex-grow {
+	flex-grow: 0 !important;
+	flex-shrink: 0 !important;
+}
+
+#state-payment-card-error > div{
+	background-color: #9E788F;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+		animation-duration: 0.2s;
+}
+
+@keyframes flash {
+	50% {
+		background-color: #FFFFFF;
+	}
+}
+
+
+#state-payment-card-error{
+	justify-content: center;
+	align-self: center;
+	flex-grow: 0;
+	flex-shrink: 1;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+
 #state-payment-card-number {
-	height: 36pt;
-	flex-basis: 270pt;
+	flex-basis: 40pt;
+	width: 270pt;
 	font-size: 32pt;
 	text-align: center;
 	border: black solid 2px;
+	margin-bottom: 10pt;
+	align-self: center;
+}
+
+#state-payment-card-flex-column {
+	display: flex;
+	flex-direction:column;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: center;
 }
 
 #state-payment-card > .flex-row > h1{
@@ -397,7 +440,7 @@ form {
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund, #state-printing {
+#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund, #state-printing, #state-destructive {
 	display:none;
 	flex-direction:column;
 }
@@ -458,4 +501,3 @@ form {
 .state-payment-cash-remaining-wrapper > span {
     margin-left: 10pt;
 }
-

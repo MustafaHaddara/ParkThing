@@ -145,6 +145,7 @@ document.getElementById('state-choose-payment-back').addEventListener('click', f
 }, false);
 
 document.getElementById('state-choose-payment-card').addEventListener('click', function() {
+	document.getElementById('state-payment-card-error').style.visibility = "hidden";
     document.getElementById('state-payment-card').style.display = 'flex';
     document.getElementById('state-choose-payment').style.display = 'none';
 }, false);
@@ -203,7 +204,7 @@ for (var  i = 0; i < keypad_buttons.length; i ++) {
 				card_num += e.currentTarget.innerText;
 			}
 		} else if(card_num.length > 0){
-			card_num = card_num.slice(0, card_num.length-1);
+			card_num = card_num.slice(0, -1);
 		}
 	}, false);
 }
@@ -220,8 +221,20 @@ document.getElementById('state-payment-card-process').addEventListener('click', 
 			clearTicket();
 			document.getElementById('state-printing').style.display = 'none';
 			document.getElementById('state-initial').style.display = 'flex';
+			card_num = "";
 		});
+	} else {
+		var tl = document.getElementById('state-payment-card-error');
+		var sl = tl.getElementsByTagName('div')[0];
+		tl.style.visibility = "visible";
+		sl.style.animationName = "flash";
+		sl.style.animationPlayState = "running";
 	}
+}, false);
+
+document.getElementById('state-payment-card-error').getElementsByTagName('div')[0].addEventListener("animationend", function(e) {
+	e.currentTarget.style.animationName = "none";
+	e.currentTarget.style.animationPlayState = "paused";
 }, false);
 
 /*state-refund*/

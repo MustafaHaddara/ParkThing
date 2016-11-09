@@ -60,6 +60,14 @@
             <button id="state-choose-payment-card" class="button green-button state-choose-payment-prim-button">Debit/Credit Card</button>
             <button id="state-choose-payment-back" class="button red-button state-choose-payment-sec-button">Back</button>
         </div>
+        <div id="state-destructive" class="expand">
+        <div class="flex-row state-choose-payment">
+        <h1>Go Back?</h1>
+        </div>
+        <div>Leaving this screen will lose your progress at the current step.</div>
+            <button id="state-destructive-cancel" class="button red-button state-choose-payment-prim-button">Cancel</button>
+            <button id="state-destructive-back" class="button green-button state-choose-payment-prim-button">Go Back</button>
+        </div>
         <!-- Cash -->
         <div id="state-payment-cash" class="expand">
           <div class="flex-row state-payment-cash-remaining-wrapper">
@@ -72,8 +80,11 @@
         <div class="flex-row">
         <h1>Swipe Card or Enter Card Number</h1>
         </div>
-        <div class="flex-row">
+        <div id="state-payment-card-non-flex-grow" class="flex-row">
+        <div id="state-payment-card-flex-column">
           <div id="state-payment-card-number"></div>
+          <div id="state-payment-card-error"><div>Oops, there appears to be an error with the card number.</div></div>
+          </div>
         </div>
         <div class="keypad-container">
         <div class="flex-row button-row">
@@ -130,8 +141,6 @@
           <button id="state-account-existing-ticket-button" class="button-remaining-time blue-button state-initial-prim-button" disabled="true">TIME REMAING ON TICKET: 00:23:15<br>EXPIRES: 14:30:00</button>
           <button id="state-account-cancel-existing-ticket" class="button red-button state-time-half-button">CANCEL TICKET</button> <!-- state account cancel ticket -->
           <button id="state-account-logout-existing" class="button red-button state-time-half-button">Logout</button> <!-- state account log out -->
-          
-          
         </div>
         <!-- Refund -->
         <div id="state-refund" class="expand">
