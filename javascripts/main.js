@@ -5,6 +5,10 @@ var price_per_interval = 30; // In cents
 
 var card_num = "";
 
+var confirm_dialog_state_stay = "";
+var confirm_dialog_state_leave = "";
+var confirm_dialog_cleanup_leave = function() {};
+
 var d = new Date();
 document.getElementById('current-time').innerText = (d.getHours().toString().length < 2?'0':'') + d.getHours() + ':' + (d.getMinutes().toString().length < 2?'0':'') + d.getMinutes();
 
@@ -34,7 +38,7 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
     document.getElementById('state-refund').style.display = 'flex';
-    printTicketWithTime(new Date(), function() {
+    printTicketWithTime(addMinutes(new Date(), randint(30,120)), function() {
         document.getElementById('state-refund').style.display = 'none';
         document.getElementById('printer-ticket').style.display = 'none';
         goToPrintingScreen('Now printing voucher, please wait');
@@ -173,7 +177,8 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
 }, false);
 
 /* state-payment-card */
-document.getElementById('state-payment-card-back').addEventListener('click', function() {
+
+var payment_card_cleanup = function() {
 	card_num = "";
     document.getElementById('state-payment-card-number').innerText = card_num;
     if(card_num.length == 16) {
@@ -181,7 +186,17 @@ document.getElementById('state-payment-card-back').addEventListener('click', fun
 	} else {
 		document.getElementById('state-payment-card-process').disabled = true;
 	}
-    document.getElementById('state-choose-payment').style.display = 'flex';
+};
+
+document.getElementById('state-payment-card-back').addEventListener('click', function() {
+    if (card_num.length > 0) {
+    	    confirm_dialog_state_stay = "state-payment-card";
+	    confirm_dialog_state_leave = "state-choose-payment";
+	    confirm_dialog_cleanup_leave = payment_card_cleanup;
+    	document.getElementById('state-destructive').style.display = 'flex';
+    } else {
+    	document.getElementById('state-choose-payment').style.display = 'flex';
+    }
     document.getElementById('state-payment-card').style.display = 'none';
 }, false);
 
@@ -249,6 +264,17 @@ document.getElementById('state-refund-cancel-button').addEventListener('click', 
     document.getElementById('printer-ticket').style.display = 'none';
 }, false);
 
+/*state-destructive*/
+document.getElementById('state-destructive-stay').addEventListener('click', function() {
+    document.getElementById(confirm_dialog_state_stay).style.display = 'flex';
+    document.getElementById('state-destructive').style.display = 'none';
+}, false);
+
+document.getElementById('state-destructive-leave').addEventListener('click', function() {
+	confirm_dialog_cleanup_leave();
+    document.getElementById(confirm_dialog_state_leave).style.display = 'flex';
+    document.getElementById('state-destructive').style.display = 'none';
+}, false);
 
 /*functions*/
 /*Display msg on the "Now Printing" screen*/
@@ -293,6 +319,12 @@ function getDate(date) {
     return day + '/' + month + '/' + year;
 }
 
+/*time management*/
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
+
+
 /*don't use npm*/
 function leftPad(str, ext, len) {
     var res = str + ''; // make sure it's a string
@@ -300,6 +332,11 @@ function leftPad(str, ext, len) {
         res = ext + res;
     }
     return res;
+}
+
+/*random int on the interval [start,stop] (ie. inclusive on both ends)*/
+function randint(start, stop) {
+    return Math.floor(Math.random() * (stop - start + 1)) + start
 }
 
 /*hide the "physical" printout*/

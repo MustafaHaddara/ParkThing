@@ -440,6 +440,42 @@ form {
 	margin-top: 8pt;
 }
 
+/* state-destructive*/
+
+#state-destructive {
+	justify-content: space-around;
+}
+
+#state-destructive > .flex-row > h1 {
+	text-align: center;
+	font-size: 40pt;
+	flex-grow: 0.5;
+}
+
+#state-destructive-blurb {
+	margin-top: 15pt;
+	font-size: 22pt;
+	width: 400pt;
+	text-align: center;
+	align-self: center;
+	flex-direction: column;
+	justify-content: center;
+	display: flex;
+	flex-grow: 0.5;
+}
+
+.state-destructive-prim-button {
+	width: 70%;
+	margin:auto;
+	flex-basis: 50pt;
+	flex-shrink:2;
+	flex-grow: 1;
+	/*max-height: 150pt;*/
+	margin-top: 23pt;
+	margin-bottom: 23pt;
+	font-size: 32pt;
+}
+
 /*state declarations*/
 
 #state-initial {
