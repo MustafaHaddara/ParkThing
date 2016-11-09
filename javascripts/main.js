@@ -150,7 +150,8 @@ document.getElementById('state-choose-payment-card').addEventListener('click', f
 }, false);
 
 document.getElementById('state-choose-payment-cash').addEventListener('click', function() {
-	var l = (payment_time/30*price_per_interval);
+	coin_payment_count = 0;
+    var l = (payment_time/30*price_per_interval);
     var m = Math.floor(l/100);
     l = (l - m*100).toString();
     document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
@@ -160,7 +161,6 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
 
 /* state-payment-coin */
 document.getElementById('state-payment-cash-back').addEventListener('click', function() {
-    coin_payment_count = 0;
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-cash').style.display = 'none';
     //TODO: Refund any coinage
@@ -317,8 +317,9 @@ var coin_payment_count = 0;
 document.getElementById('coin-slot').addEventListener('click', function() {
     coin_payment_count++;
     var l = (payment_time/30*price_per_interval);
+    l = l - coin_payment_increment * coin_payment_count;
     var m = Math.floor(l/100);        
-    if ((l - m*100 - coin_payment_increment * coin_payment_count) == 0) {
+    if ((l + m*100) == 0) {
         coin_payment_count = 0;
         if(document.getElementById('state-payment-cash').style.display === 'flex') {
             document.getElementById('state-payment-cash').style.display = 'none';
@@ -334,6 +335,6 @@ document.getElementById('coin-slot').addEventListener('click', function() {
             });
         }
     }     
-    l = (l - m*100 - coin_payment_increment * coin_payment_count).toString();   
+    l = (l - m*100).toString();   
     document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
 }, false);
