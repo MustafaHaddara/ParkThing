@@ -96,9 +96,12 @@ document.getElementById('state-account-logout-existing').addEventListener('click
 
 
 document.getElementById('state-account-start-new-ticket').addEventListener('click', function() {
-    
-    document.getElementById('state-account-existing-ticket').style.display = 'none';
-    document.getElementById('state-account-existing-ticket').disabled = true;
+    var max_expiry_time = addMinutes(new Date(), max_time);
+    printTicketWithTime(max_expiry_time, function() {
+        document.getElementById('state-initial').style.display = 'flex';
+        document.getElementById('state-account-new-ticket').style.display = 'none';
+        clearTicket();
+    });
 }, false);
 
 /*state-time*/
