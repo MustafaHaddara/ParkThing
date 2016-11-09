@@ -34,7 +34,7 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
     document.getElementById('state-refund').style.display = 'flex';
-    printTicketWithTime(new Date(), function() {
+    printTicketWithTime(addMinutes(new Date(), randint(30,120)), function() {
         document.getElementById('state-refund').style.display = 'none';
         document.getElementById('printer-ticket').style.display = 'none';
         goToPrintingScreen('Now printing voucher, please wait');
@@ -288,6 +288,12 @@ function getDate(date) {
     return day + '/' + month + '/' + year;
 }
 
+/*time management*/
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
+
+
 /*don't use npm*/
 function leftPad(str, ext, len) {
     var res = str + ''; // make sure it's a string
@@ -295,6 +301,11 @@ function leftPad(str, ext, len) {
         res = ext + res;
     }
     return res;
+}
+
+/*random int on the interval [start,stop] (ie. inclusive on both ends)*/
+function randint(start, stop) {
+    return Math.floor(Math.random() * (stop - start + 1)) + start
 }
 
 /*hide the "physical" printout*/
