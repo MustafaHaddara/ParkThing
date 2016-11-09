@@ -91,6 +91,11 @@ document.getElementById('state-account-logout-existing').addEventListener('click
 }, false);
 
 
+document.getElementById('state-account-start-new-ticket').addEventListener('click', function() {
+    
+    document.getElementById('state-account-existing-ticket').style.display = 'none';
+    document.getElementById('state-account-existing-ticket').disabled = true;
+}, false);
 
 /*state-time*/
 document.getElementById('state-time-cancel-button').addEventListener('click', function() {
@@ -160,7 +165,7 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
     document.getElementById('state-choose-payment').style.display = 'none';
 }, false);
 
-/* state-payment-coin */
+/* state-payment- */
 document.getElementById('state-payment-cash-back').addEventListener('click', function() {
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-cash').style.display = 'none';

@@ -283,18 +283,24 @@ form {
 	color: #000000;
 }
 
-.state-account-existing-logout {
-
+.button-account-cancel {
+	border-radius: 10px;
+	border: none;
+	margin-top: 15px;
 }
 
-.state-account-cancel-ticket {
-	
+.button-account-logout {
+	border-radius: 10px;
+	border: none;
+	margin-top: 15px;
+
 }
 
 /*logged in*/
 #state-account-logout{
 	flex-shrink: 1;
 }
+
 
 /*state-choose-payment*/
 #state-choose-payment{
