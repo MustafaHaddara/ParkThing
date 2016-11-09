@@ -102,6 +102,10 @@ document.getElementById('state-account-start-new-ticket').addEventListener('clic
         document.getElementById('state-account-new-ticket').style.display = 'none';
         clearTicket();
     });
+    
+    document.getElementById('state-account-new-ticket').disabled = true;
+    document.getElementById('state-account-new-ticket').style.display = 'none';
+    goToPrintingScreen('Transaction Approved. Printing Ticket...');
 }, false);
 
 /*state-time*/
