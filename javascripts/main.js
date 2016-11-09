@@ -108,6 +108,18 @@ document.getElementById('state-account-start-new-ticket').addEventListener('clic
     goToPrintingScreen('Transaction Approved. Printing Ticket...');
 }, false);
 
+document.getElementById('state-account-cancel-existing-ticket').addEventListener('click', function() {
+    var max_expiry_time = addMinutes(new Date(), max_time);
+    printTicketWithTime(max_expiry_time, function() {
+        document.getElementById('state-initial').style.display = 'flex';
+        document.getElementById('state-account-existing-ticket').style.display = 'none';
+        clearTicket();
+    });
+    document.getElementById('state-account-existing-ticket').disabled = true;
+    document.getElementById('state-account-existing-ticket').style.display = 'none';
+    goToPrintingScreen('Transaction Finished. Printing Receipts...');
+}, false);
+
 /*state-time*/
 document.getElementById('state-time-cancel-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'flex';
