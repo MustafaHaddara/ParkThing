@@ -30,6 +30,12 @@ h1 {
 	align-self: center;
 }
 
+/* for labelling the coin and card slot */
+h3 { 
+	color: white;
+	font: 20px;
+}
+
 #ui-container > .flex-row {
 	display: flex;
 	border: black solid 1px;
