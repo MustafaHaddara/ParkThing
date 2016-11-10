@@ -21,7 +21,7 @@
         </div></div>
         <div id="state-initial" class="expand">
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
-          <button id="state-initial-refund-button" class="button blue-button state-initial-sec-button">Refund Unused Minutes</button>
+          <button id="state-initial-refund-button" class="button blue-button state-initial-sec-button">Close Existing Ticket</button>
           <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start Prepaid Ticket</button>
         </div>
         <!-- Choose Time -->
@@ -43,8 +43,8 @@
             </span>
             </div>
           <div class="flex-row">
-            <button id="state-time-minus-time" class="button time-button state-time-half-button blue-button" disabled>&ndash;30 min</button>
-            <button id="state-time-plus-time" class="button time-button state-time-half-button blue-button">+30 min</button>
+            <button id="state-time-minus-time" class="button time-button state-time-half-button blue-button" disabled>&ndash;30 minutes</button>
+            <button id="state-time-plus-time" class="button time-button state-time-half-button blue-button">+30 minutes</button>
           </div>
           <div class="flex-row">
             <button id="state-time-cancel-button" class="button red-button state-time-half-button">Cancel</button>
@@ -71,9 +71,13 @@
         </div>
         <!-- Cash -->
         <div id="state-payment-cash" class="expand">
+        <div class="flex-row">
+        <h1>Insert Coins</h1>
+        </div>
           <div class="flex-row state-payment-cash-remaining-wrapper">
-            Remaining: <span id="state-payment-cash-remaining">&nbsp;$0.00</span>
+            <div id="inner-thing"><span>Outstanding Payment: <span id="state-payment-cash-remaining">&nbsp;$0.00</span></span></div>
           </div>
+          <div class="empty-row">&nbsp;</div>
           <button id="state-payment-cash-back" class="button red-button">Back</button>
         </div>
         <!-- Debit/Credit -->

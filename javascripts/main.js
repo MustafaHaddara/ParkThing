@@ -65,9 +65,12 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
         var d = Math.floor(money_back/100);
         var c = money_back - d*100;
         if (!last_printed_from_account) {
-        	document.getElementById('state-refund-return-text').innerText = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+        	document.getElementById('state-refund-return-text').innerHTML = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
     	} else {
-    		document.getElementById('state-refund-return-text').innerText = 'Debited: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+    		var bal = money_back + randint(100,500);
+    		var e = Math.floor(bal/100);
+    		var f = bal - e*100;
+    		document.getElementById('state-refund-return-text').innerHTML = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c + '<br>Account Balance: $' + e + '.' + (f.toString().length < 2?"0":"") + f;
     	}
        	document.getElementById('state-refund-return').style.display = "flex";
         setTimeout(function() {
@@ -100,7 +103,8 @@ document.getElementById('state-log-in-cancel-button').addEventListener('click', 
 document.getElementById('state-log-in-submit').addEventListener('click', function() {
     if (account_number === "5556667771") {
 		document.getElementById('state-log-in').style.display = 'none';
-		goToPrintingScreen('Printing Ticket...');
+		var c = randint(0, 99)
+		goToPrintingScreen('Printing Ticket...<br>Account Balance: $' + randint(1, 6) + "." + (c.toString().length < 2?"0":"") + c);
         var selectedExpiryDate = new Date();
         selectedExpiryDate.setMinutes(selectedExpiryDate.getMinutes() + 120);
 		printTicketWithTime(selectedExpiryDate, function() {
@@ -262,10 +266,12 @@ document.getElementById('card-slot').addEventListener('click', function() {
                 s.pause();
                 s.currentTime = 0;
 			document.getElementById('state-initial').style.display = 'flex';
+			last_printed_from_account = false;
 		});
 	} else if(document.getElementById('state-log-in').style.display === 'flex') {
 		document.getElementById('state-log-in').style.display = 'none';
-		goToPrintingScreen('Printing Ticket...');
+		var c = randint(0, 99)
+		goToPrintingScreen('Printing Ticket...<br>Account Balance: $' + randint(1, 6) + "." + (c.toString().length < 2?"0":"") + c);
         var selectedExpiryDate = new Date();
         selectedExpiryDate.setMinutes(selectedExpiryDate.getMinutes() + 120);
 		printTicketWithTime(selectedExpiryDate, function() {
@@ -321,6 +327,7 @@ document.getElementById('state-payment-card-process').addEventListener('click', 
                 s.currentTime = 0;
 			document.getElementById('state-initial').style.display = 'flex';
 			card_num = "";
+			last_printed_from_account = false;
 		});
 	} else {
 		var tl = document.getElementById('state-payment-card-error');
@@ -430,7 +437,6 @@ function randint(start, stop) {
 function clearTicket() {
     document.getElementById('printer-ticket').style.display = 'none';
     document.getElementById('printer-ticket').innerHTML = '';
-    document.getElementById('state-printing-text').style.display = 'none';
 }
 
 function timeUpdate() {
@@ -495,6 +501,7 @@ document.getElementById('coin-slot').addEventListener('click', function() {
                 s.pause();
                 s.currentTime = 0;
                 document.getElementById('state-initial').style.display = 'flex';
+                last_printed_from_account = false;
             });
         }
     }     

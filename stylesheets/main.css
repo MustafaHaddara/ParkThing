@@ -28,6 +28,7 @@ html, body {
 h1 {
 	margin: auto;
 	align-self: center;
+	font-size: 30pt;
 }
 
 /* for labelling the coin and card slot */
@@ -177,7 +178,7 @@ h3 {
 	margin-bottom: 15pt;
 	flex-shrink: 1;
 	flex-grow: 2;
-	font-size: 36pt;
+	font-size: 30pt;
 
 }
 
@@ -189,14 +190,14 @@ h3 {
 	flex-grow: 1;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	font-size: 36pt;
+	font-size: 30pt;
 }
 
 /*state-time*/
 .state-time-half-button {
 	width: 45%;
 	margin:auto;
-	font-size: 28pt;
+	font-size: 30pt;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
 }
@@ -210,8 +211,7 @@ h3 {
 }
 
 .time-button {
-	font-size: 28pt;
-	border-radius: 25pt;
+	font-size: 30pt;
 	/*width: 25pt;*/
 }
 
@@ -311,7 +311,7 @@ h3 {
 #state-log-in-card-number {
 	flex-basis: 40pt;
 	width: 180pt;
-	font-size: 32pt;
+	font-size: 30pt;
 	text-align: center;
 	border: black solid 2px;
 	margin-bottom: 10pt;
@@ -353,12 +353,13 @@ h3 {
 	margin-bottom: 15pt;
 	flex-shrink: 1;
 	flex-grow: 2;
-	font-size: 36pt;
+	font-size: 30pt;
 
 }
 
 #state-choose-payment > .flex-row >  h1 {
-	font-size: 40pt;
+	margin-top: 5pt;
+	font-size: 30pt;
 	flex-grow: 1;
 }
 
@@ -370,7 +371,7 @@ h3 {
 	flex-grow: 1;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
-	font-size: 36pt;
+	font-size: 30pt;
 }
 
 /* state-payment-card */
@@ -392,6 +393,10 @@ h3 {
 #state-payment-card{
 	align-content: space-around;
 	align-self: space-around;
+}
+
+#state-payment-card-back, #state-payment-card-process {
+	font-size: 30pt;
 }
 
 #state-payment-card > .keypad-container {
@@ -438,7 +443,7 @@ h3 {
 #state-payment-card-number {
 	flex-basis: 40pt;
 	width: 270pt;
-	font-size: 32pt;
+	font-size: 30pt;
 	text-align: center;
 	border: black solid 2px;
 	margin-bottom: 10pt;
@@ -454,7 +459,7 @@ h3 {
 }
 
 #state-payment-card > .flex-row > h1{
-	font-size: 36pt;
+	font-size: 30pt;
 	flex-grow: 1;
 	text-align: center;
 }
@@ -464,8 +469,8 @@ h3 {
 }
 
 .keypad-button {
-	font-size: 36pt;
-	flex-basis: 72pt;
+	font-size: 30pt;
+	flex-basis: 60pt;
 }
 
 .keypad-button + .keypad-button {
@@ -484,7 +489,7 @@ h3 {
 
 #state-destructive > .flex-row > h1 {
 	text-align: center;
-	font-size: 40pt;
+	font-size: 30pt;
 	flex-grow: 0.5;
 }
 
@@ -509,7 +514,7 @@ h3 {
 	/*max-height: 150pt;*/
 	margin-top: 23pt;
 	margin-bottom: 23pt;
-	font-size: 32pt;
+	font-size: 30pt;
 }
 
 /*state declarations*/
@@ -560,9 +565,10 @@ h3 {
 
 /* state-payment-cash */
 .state-payment-cash-remaining-wrapper {
-	border: black solid 2pt;
-	flex-grow: 1;
-    font-size: 48pt;
+	border: #474954 solid 2pt;
+	flex-grow: 2;
+	flex-shrink: 1;
+    font-size: 36pt;
     align-self: center;
     margin: auto;
     display: flex;
@@ -571,9 +577,23 @@ h3 {
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    max-height: 175pt;
+    margin: 14pt;
+}
+
+#inner-thing {
+	position: relative;
+	top: 50%;
+	width: 100%;
+	height: 100%;
+	border: black solid 2pt;
+	text-align: center;
+	vertical-align: middle;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#inner-thing > span {
 }
 
 #state-payment-cash {
@@ -587,16 +607,38 @@ h3 {
     margin-left: 10pt;
 }
 
+#state-payment-cash > .flex-row:not(.state-payment-cash-remaining-wrapper) {
+}
+
+#state-payment-cash > .flex-row > h1 {
+	margin-top: 5pt;
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+
+#state-payment-cash > .state-payment-cash-remaining-wrapper{
+	flex-basis: 100pt;
+}
+
+
+#state-payment-cash > .flex-row  > h1{
+}
+#state-payment-cash > .empty-row {
+	flex-grow: 2;
+	flex-shrink: 1;
+	flex-basis: 100pt;
+	margin: 15pt;
+	font-size: 30pt;
+}
+
 #state-payment-cash-back {
-	width: 70%;
-	margin:auto;
-	flex-basis: 50pt;
-	flex-shrink:2;
+	width: 40%;
 	flex-grow: 1;
-	max-height: 75pt;
-	margin-top: 15pt;
-	margin-bottom: 15pt;
-	font-size: 36pt;
+	flex-shrink: 2;
+	flex-basis: 50pt;
+	margin: 15pt;
+	font-size: 30pt;
 }
 
 #state-printing-text {
@@ -614,15 +656,15 @@ h3 {
 }
 
 #state-refund > h1 {
-	font-size: 40pt;
+	font-size: 36pt;
 }
 
 #state-refund-cancel-button {
 	flex-grow: 1;
 	flex-shrink: 1;
 	max-height: 75pt;
-	font-size: 32pt;
-	width: 70%;
+	font-size: 30pt;
+	width: 40%;
 	margin-bottom: 15pt;
 	align-self: center;
 }
@@ -648,14 +690,14 @@ h3 {
 }
 
 #state-account-refund > h1 {
-	font-size: 40pt;
+	font-size: 30pt;
 }
 
 #state-account-refund-cancel-button {
 	flex-grow: 1;
 	flex-shrink: 1;
 	max-height: 75pt;
-	font-size: 32pt;
+	font-size: 30pt;
 	width: 70%;
 	margin-bottom: 15pt;
 	align-self: center;
@@ -672,6 +714,6 @@ h3 {
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 60pt;
-	font-size: 36pt;
+	font-size: 30pt;
 	align-self: center;
 }
