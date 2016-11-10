@@ -82,7 +82,7 @@ h3 {
 }
 
 #ui-container {
-	background-color: #AAAAAA;
+	background-color: #999999;
 	display: flex;
 	flex-basis: 300px;
 	flex-grow: 50;
@@ -576,7 +576,7 @@ h3 {
 
 /* state-payment-cash */
 .state-payment-cash-remaining-wrapper {
-	border: #474954 solid 2pt;
+	border: #999999 solid 2pt; /* Original color #474954*/
 	flex-grow: 2;
 	flex-shrink: 1;
     font-size: 36pt;
