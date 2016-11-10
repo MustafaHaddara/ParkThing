@@ -64,7 +64,7 @@
         <div class="flex-row">
           <h1>Leave screen?</h1>
         </div>
-        <div id="state-destructive-blurb" class="flex-row">Leaving this screen will lose your progress at the current step.</div>
+        <div id="state-destructive-blurb" class="flex-row">Leaving this screen will lose your progress at the current step.<span id="state-destructive-blurb-byline"></span></div>
             <button id="state-destructive-stay" class="button green-button state-destructive-prim-button">No, Stay</button>
             <button id="state-destructive-leave" class="button red-button state-destructive-prim-button">Yes, Go Back</button>
             <audio id='coins' src='audio/coins.mp3'></audio>
@@ -151,6 +151,7 @@
         <!-- Printing -->
         <div id="state-printing" class="expand">
           <h1 id="state-printing-text"></h1>  <!-- Set this manually when using this view -->
+          <audio id='state-printing-alert' src='audio/alert.mp3'></audio>
         </div>
       </div>
       <!-- Other Interface Elements -->

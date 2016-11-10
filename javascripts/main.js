@@ -49,6 +49,9 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
             printTicket('You have $10 of unused parking time!<br>Redeem this online at myparking.fakecity.ca', function() {
                 document.getElementById('state-printing').style.display = 'none';
                 document.getElementById('printer-ticket').style.display = 'none';
+                var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
                 document.getElementById('state-initial').style.display = 'flex';
             })
             goToPrintingScreen('Please take your voucher');
@@ -125,7 +128,14 @@ document.getElementById('state-account-cancel-existing-ticket').addEventListener
 
 /*state-time*/
 document.getElementById('state-time-cancel-button').addEventListener('click', function() {
-    document.getElementById('state-initial').style.display = 'flex';
+    if (payment_time > 0) {
+    	confirm_dialog_state_stay = "state-time";
+	    confirm_dialog_state_leave = "state-initial";
+	    confirm_dialog_cleanup_leave = function() {};
+    	document.getElementById('state-destructive').style.display = 'flex';
+    } else {
+    	document.getElementById('state-initial').style.display = 'flex';
+    }
     document.getElementById('state-time').style.display = 'none';
 }, false);
 
@@ -202,6 +212,12 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
     	    confirm_dialog_state_stay = "state-payment-cash";
 	    confirm_dialog_state_leave = "state-choose-payment";
 	    confirm_dialog_cleanup_leave = payment_cash_cleanup;
+	    var l = coin_payment_increment * coin_payment_count;
+	    if (l > 0) {
+	    	var m =  Math.floor(l/100);
+	    	l -= m*100;
+	    	document.getElementById('state-destructive-blurb-byline').innerText = "You will be returned $" + m + "." + (l.toString().length < 2? "0": "") + l;
+		}
     	document.getElementById('state-destructive').style.display = 'flex';
     } else {
     	document.getElementById('state-choose-payment').style.display = 'flex';
@@ -246,6 +262,9 @@ document.getElementById('card-slot').addEventListener('click', function() {
 		printTicketWithTime(selectedExpiryDate, function() {
 			clearTicket();
 			document.getElementById('state-printing').style.display = 'none';
+			var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
 			document.getElementById('state-initial').style.display = 'flex';
 		});
 	}
@@ -275,6 +294,9 @@ document.getElementById('state-payment-card-process').addEventListener('click', 
 		printTicketWithTime(selectedExpiryDate, function() {
 			clearTicket();
 			document.getElementById('state-printing').style.display = 'none';
+			var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
 			document.getElementById('state-initial').style.display = 'flex';
 			card_num = "";
 		});
@@ -301,12 +323,14 @@ document.getElementById('state-refund-cancel-button').addEventListener('click', 
 
 /*state-destructive*/
 document.getElementById('state-destructive-stay').addEventListener('click', function() {
+	document.getElementById('state-destructive-blurb-byline').innerText = "";
     document.getElementById(confirm_dialog_state_stay).style.display = 'flex';
     document.getElementById('state-destructive').style.display = 'none';
 }, false);
 
 document.getElementById('state-destructive-leave').addEventListener('click', function() {
 	confirm_dialog_cleanup_leave();
+	document.getElementById('state-destructive-blurb-byline').innerText = "";
     document.getElementById(confirm_dialog_state_leave).style.display = 'flex';
     document.getElementById('state-destructive').style.display = 'none';
 }, false);
@@ -314,6 +338,7 @@ document.getElementById('state-destructive-leave').addEventListener('click', fun
 /*functions*/
 /*Display msg on the "Now Printing" screen*/
 function goToPrintingScreen(msg) {
+	setTimeout(printingScreenTimeout, 5000);
     document.getElementById('state-printing').style.display = 'flex';
     document.getElementById('state-printing-text').innerHTML = msg;
 }
@@ -400,6 +425,13 @@ function timeUpdate() {
 
 window.requestAnimationFrame(timeUpdate);
 
+
+function printingScreenTimeout() {
+	if (document.getElementById('state-printing').style.display === "flex") {
+		document.getElementById('state-printing-alert').play();
+	}
+}
+
 /*  Physical Coin-Slot */
 
 document.getElementById('coin-slot').addEventListener('click', function() {
@@ -424,10 +456,13 @@ document.getElementById('coin-slot').addEventListener('click', function() {
             printTicketWithTime(selectedExpiryDate, function() {
                 clearTicket();
                 document.getElementById('state-printing').style.display = 'none';
+                var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
                 document.getElementById('state-initial').style.display = 'flex';
             });
         }
     }     
-    l = (l - m*100).toString();   
+    c = (c - m*100).toString();   
     document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' +  (c.toString().length < 2? '0':'') + c;
 }, false);
