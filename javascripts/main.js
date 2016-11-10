@@ -37,9 +37,11 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
     document.getElementById('state-initial').disabled = true;
     document.getElementById('state-log-in').style.display = 'flex';
     document.getElementById("state-log-in-username").value = "";
+    document.getElementById('state-printing').style.display = 'none';
 }, false);
 
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
+    document.getElementById('state-printing').style.display = 'none';
     document.getElementById('state-initial').style.display = 'none';
     document.getElementById('state-refund').style.display = 'flex';
     var t = addMinutes(new Date(), randint(30,120));
@@ -123,16 +125,34 @@ document.getElementById('state-account-start-new-ticket').addEventListener('clic
 }, false);
 
 document.getElementById('state-account-cancel-existing-ticket').addEventListener('click', function() {
-    var max_expiry_time = addMinutes(new Date(), max_time);
-    printTicketWithTime(max_expiry_time, function() {
-        document.getElementById('state-initial').style.display = 'flex';
-        document.getElementById('state-account-existing-ticket').style.display = 'none';
-        clearTicket();
-    });
-    document.getElementById('state-account-existing-ticket').disabled = true;
+    // var max_expiry_time = addMinutes(new Date(), max_time);
+    // printTicketWithTime(max_expiry_time, function() {
+    //     document.getElementById('state-initial').style.display = 'flex';
+    //     document.getElementById('state-account-existing-ticket').style.display = 'none';
+    //     clearTicket();
+    // });
+    // document.getElementById('state-account-existing-ticket').disabled = true;
+    // document.getElementById('state-account-existing-ticket').style.display = 'none';
+    // goToPrintingScreen('Transaction Finished. Printing Receipts...');
+    // document.getElementById('state-printing-text').style.display = 'flex';
+
     document.getElementById('state-account-existing-ticket').style.display = 'none';
-    goToPrintingScreen('Transaction Finished. Printing Receipts...');
-    document.getElementById('state-printing-text').style.display = 'flex';
+    document.getElementById('state-account-refund').style.display = 'flex';
+    var t = addMinutes(new Date(), randint(30,120));
+    printTicketWithTime(t, function() {
+        document.getElementById('state-account-refund').style.display = 'none';
+        document.getElementById('printer-ticket').style.display = 'none';
+        document.getElementById('state-account-refund-return-text').innerText = 'Printing transaction receipt.';
+        document.getElementById('state-printing').style.display = "none";
+        document.getElementById('state-account-refund-return').style.display = "flex";
+        if(money_back > 0) {
+            document.getElementById('coins').play();
+        }
+        // setTimeout(function() {
+        //     document.getElementById('state-account-refund-return').style.display = "none";
+        //     document.getElementById('state-initial').style.display = "flex";
+        // }, 5000);
+    });
 }, false);
 
 /*state-time*/
