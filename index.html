@@ -22,7 +22,7 @@
         <div id="state-initial" class="expand">
           <button id="state-initial-new-button" class="button green-button state-initial-prim-button">Begin New Ticket</button>
           <button id="state-initial-refund-button" class="button blue-button state-initial-sec-button">Refund Unused Minutes</button>
-          <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start/Stop Prepaid Ticket</button>
+          <button id="state-initial-prepaid-button" class="button blue-button state-initial-sec-button">Start Prepaid Ticket</button>
         </div>
         <!-- Choose Time -->
         <div id="state-time" class="expand">
@@ -84,29 +84,29 @@
         <div id="state-payment-card-non-flex-grow" class="flex-row">
         <div id="state-payment-card-flex-column">
           <div id="state-payment-card-number"></div>
-          <div id="state-payment-card-error"><div>Oops, there appears to be an error with the card number.</div></div>
+          <div id="state-payment-card-error"><div>Oops, that card number looks incorrect. Could you double-check it?</div></div>
           </div>
         </div>
         <div class="keypad-container">
         <div class="flex-row button-row">
-            <button id="state-payment-card-1" class="button keypad-button blue-button">1</button>
-            <button id="state-payment-card-2" class="button keypad-button blue-button">2</button>
-            <button id="state-payment-card-3" class="button keypad-button blue-button">3</button>
+            <button id="state-payment-card-1" class="button keypad-button keypad-button-payment-card blue-button">1</button>
+            <button id="state-payment-card-2" class="button keypad-button keypad-button-payment-card blue-button">2</button>
+            <button id="state-payment-card-3" class="button keypad-button keypad-button-payment-card blue-button">3</button>
           </div>
           <div class="flex-row button-row">
-            <button id="state-payment-card-4" class="button keypad-button blue-button">4</button>
-            <button id="state-payment-card-5" class="button keypad-button blue-button">5</button>
-            <button id="state-payment-card-6" class="button keypad-button blue-button">6</button>
+            <button id="state-payment-card-4" class="button keypad-button keypad-button-payment-card blue-button">4</button>
+            <button id="state-payment-card-5" class="button keypad-button keypad-button-payment-card blue-button">5</button>
+            <button id="state-payment-card-6" class="button keypad-button keypad-button-payment-card blue-button">6</button>
           </div>
           <div class="flex-row button-row">
-            <button id="state-payment-card-7" class="button keypad-button blue-button">7</button>
-            <button id="state-payment-card-8" class="button keypad-button blue-button">8</button>
-            <button id="state-payment-card-9" class="button keypad-button blue-button">9</button>
+            <button id="state-payment-card-7" class="button keypad-button keypad-button-payment-card blue-button">7</button>
+            <button id="state-payment-card-8" class="button keypad-button keypad-button-payment-card blue-button">8</button>
+            <button id="state-payment-card-9" class="button keypad-button keypad-button-payment-card blue-button">9</button>
           </div>
           <div class="flex-row button-row">
             <button class="button keypad-button" style="visibility:hidden"></button> <!--Cross platform way to take up uniform space (Safari).-->
-            <button id="state-payment-card-0" class="button keypad-button blue-button">0</button>
-            <button id="state-payment-card-backspace" class="button keypad-button blue-button">&lt;</button>
+            <button id="state-payment-card-0" class="button keypad-button keypad-button-payment-card blue-button">0</button>
+            <button id="state-payment-card-backspace" class="button keypad-button keypad-button-payment-card blue-button">&lt;</button>
           </div>
           </div>
             <div class="flex-row">
@@ -116,32 +116,41 @@
         </div>
         <!-- Log In -->
         <div id="state-log-in" class="expand">
-          <form id="login-form" class="login-info">  
-            <div class="log-in-flex-row">
-              <input type="text" id="state-log-in-username" class="log-in-username-input state-initial-prim-button" placeholder="Username">
-              </input>
-              <input type="password" id="state-log-in-password" class="log-in-password-input state-initial-prim-button" placeholder="Password">
-              </input>
-
-              <button id="state-log-in-submit" class="button green-button state-initial-prim-button">Log In</button>
-              <button id="state-log-in-cancel-button" class="button red-button state-time-half-button">Cancel</button>
+          <div class="flex-row">
+          <h1>Swipe Membership Card or Enter Membership Card Number</h1>
+          </div>
+          <div id="state-log-in-non-flex-grow" class="flex-row">
+          <div id="state-log-in-flex-column">
+            <div id="state-log-in-card-number"></div>
+            <div id="state-log-in-card-error"><div>Oops, that membership card number looks incorrect. Could you double-check it?</div></div>
             </div>
-          </form> 
-        </div>
-        <!-- Logged In (Create New Ticket) -->
-        <div id="state-account-new-ticket" class="expand">
-          <h1>Hello, Adam the TA! </h1>
-          <button id="state-account-new-balance" class="button-balance green-button state-initial-prim-button" disabled="true" >Current Balance: $20.00<br>(160 hours)</button>
-          <button id="state-account-start-new-ticket" class="button blue-button state-initial-prim-button">Start New Ticket</button>
-          <button id="state-account-logout" class="button red-button state-initial-sec-button">Logout</button>
-        </div>
-        <!-- Logged In (Existing Ticket) -->
-        <div id="state-account-existing-ticket" class="expand">
-          <h1>Hello Sasha, Welcome back!</h1>
-          <button id="state-account-new-balance" class="button-balance green-button state-initial-prim-button" disabled="true" >Current Balance: $1.25<br>(36 minutes)</button>
-          <button id="state-account-existing-ticket-button" class="button-remaining-time blue-button state-initial-prim-button" disabled="true">TIME REMAING ON TICKET: 00:23:15<br>EXPIRES: 14:30:00</button>
-          <button id="state-account-cancel-existing-ticket" class="button red-button state-time-half-button">CANCEL TICKET</button> <!-- state account cancel ticket -->
-          <button id="state-account-logout-existing" class="button-account-logout red-button state-time-half-button">Logout</button> <!-- state account log out -->
+          </div>
+              <div class="keypad-container">
+        <div class="flex-row button-row">
+            <button id="state-log-in-1" class="button keypad-button keypad-button-log-in blue-button">1</button>
+            <button id="state-log-in-2" class="button keypad-button keypad-button-log-in blue-button">2</button>
+            <button id="state-log-in-3" class="button keypad-button keypad-button-log-in blue-button">3</button>
+          </div>
+          <div class="flex-row button-row">
+            <button id="state-log-in-4" class="button keypad-button keypad-button-log-in blue-button">4</button>
+            <button id="state-log-in-5" class="button keypad-button keypad-button-log-in blue-button">5</button>
+            <button id="state-log-in-6" class="button keypad-button keypad-button-log-in blue-button">6</button>
+          </div>
+          <div class="flex-row button-row">
+            <button id="state-log-in-7" class="button keypad-button keypad-button-log-in blue-button">7</button>
+            <button id="state-log-in-8" class="button keypad-button keypad-button-log-in blue-button">8</button>
+            <button id="state-log-in-9" class="button keypad-button keypad-button-log-in blue-button">9</button>
+          </div>
+          <div class="flex-row button-row">
+            <button class="button keypad-button" style="visibility:hidden">0</button> <!--Cross platform way to take up uniform space (Safari).-->
+            <button id="state-log-in-0" class="button keypad-button keypad-button-log-in blue-button">0</button>
+            <button id="state-log-in-backspace" class="button keypad-button keypad-button-log-in blue-button">&lt;</button>
+          </div>
+          </div>
+          <div class="flex-row">
+              <button id="state-log-in-cancel-button" class="button red-button state-time-half-button">Cancel</button>
+              <button id="state-log-in-submit" class="button green-button state-time-half-button" disabled>Log In</button>
+              </div>
         </div>
         <!-- Account Refund -->
         <div id="state-account-refund" class="expand">

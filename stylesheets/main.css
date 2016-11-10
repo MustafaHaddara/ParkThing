@@ -163,6 +163,7 @@ h3 {
 .expand {
 	/*width: 100%;
 	height: 100%;*/
+	flex-shrink: 0;
 	flex-grow:1;
 	width:100%;
 }
@@ -170,7 +171,7 @@ h3 {
 /*state-initial*/
 .state-initial-prim-button {
 	width: 70%;
-	flex-basis: 200pt;
+	flex-basis: 150pt;
 	margin:auto;
 	margin-top: 15pt;
 	margin-bottom: 15pt;
@@ -183,7 +184,7 @@ h3 {
 .state-initial-sec-button {
 	width: 70%;
 	margin:auto;
-	flex-basis: 100pt;
+	flex-basis: 75pt;
 	flex-shrink:2;
 	flex-grow: 1;
 	margin-top: 15pt;
@@ -255,59 +256,80 @@ h3 {
 
 #state-log-in {
 	justify-content: center;
+	align-content: space-around;
+	align-self: space-around;
 }
 
-#state-log-in > h2{
-	margin: 0px;
-}
-
-form {
+#state-log-in > .keypad-container > .flex-row {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center;
 }
 
-.log-in-username-input{
-	background-color: #7284A8;
-	color: white;
-	box-shadow: 2px 2px 2px 2px rgba(26, 33, 42, 0.80);
-	display: block;
+#state-log-in > .flex-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-shrink: 1;
+	flex-grow: 1;
 }
 
-.log-in-password-input{
+#state-log-in > .keypad-container {
+	justify-content: center;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+
+#state-log-in-non-flex-grow {
+	flex-grow: 0 !important;
+	flex-shrink: 0 !important;
+}
+
+#state-log-in-card-error > div{
+	border-radius: 10pt;
 	background-color: #9E788F;
-	color: white;
-	box-shadow: 2px 2px 2px 2px rgba(64, 42, 42, 0.80);
-	align-self: center center;
-	display: block;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+		animation-duration: 0.2s;
 }
 
-.log-in-flex-row > button {
-	display: block;
+#state-log-in-card-error{
+	justify-content: center;
+	align-self: center;
+	flex-grow: 0;
+	flex-shrink: 1;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	visibility: hidden;
 }
 
-.button-balance:disabled {
-	background-color:#87CE67;
-	box-shadow: 0 0 0 0 !important;
-	color: #000000;
+#state-log-in-card-number {
+	flex-basis: 40pt;
+	width: 180pt;
+	font-size: 32pt;
+	text-align: center;
+	border: black solid 2px;
+	margin-bottom: 10pt;
+	align-self: center;
 }
 
-.button-remaining-time:disabled {
-	background-color: #7284A8;
-	box-shadow: 0 0 0 0 !important;
-	color: #000000;
+#state-log-in-flex-column {
+	display: flex;
+	flex-direction:column;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: center;
 }
 
-.button-account-cancel {
-	border-radius: 10px;
-	border: none;
-	margin-top: 15px;
-}
-
-.button-account-logout {
-	border-radius: 10px;
-	border: none;
-	margin-top: 15px;
-
+#state-log-in > .flex-row > h1{
+	font-size: 30pt;
+	flex-grow: 1;
+	text-align: center;
 }
 
 /*logged in*/

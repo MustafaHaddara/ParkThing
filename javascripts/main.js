@@ -12,6 +12,10 @@ var confirm_dialog_cleanup_leave = function() {};
 var coin_payment_increment = 25; // cents
 var coin_payment_count = 0;
 
+var account_number = "";
+
+var last_printed_from_account = false;
+
 var d = new Date();
 document.getElementById('current-time').innerText = (d.getHours().toString().length < 2?'0':'') + d.getHours() + ':' + (d.getMinutes().toString().length < 2?'0':'') + d.getMinutes();
 
@@ -33,11 +37,7 @@ document.getElementById('state-initial-new-button').addEventListener('click', fu
 
 document.getElementById('state-initial-prepaid-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
-    document.getElementById('state-log-in').disabled = false;
-    document.getElementById('state-initial').disabled = true;
     document.getElementById('state-log-in').style.display = 'flex';
-    document.getElementById("state-log-in-username").value = "";
-    document.getElementById('state-printing').style.display = 'none';
 }, false);
 
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
@@ -54,105 +54,67 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
         } else {
         	money_back += (5 -(money_back%5));
         }
+        if(last_printed_from_account) {
+        	money_back = 120 - money_back; // 120 is 2hr*30c/30min
+        }
         var d = Math.floor(money_back/100);
         var c = money_back - d*100;
-        document.getElementById('state-refund-return-text').innerText = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+        if (!last_printed_from_account) {
+        	document.getElementById('state-refund-return-text').innerText = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+    	} else {
+    		document.getElementById('state-refund-return-text').innerText = 'Debited: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+    	}
        	document.getElementById('state-refund-return').style.display = "flex";
-        if(money_back > 0) {
-        	document.getElementById('coins').play();
-        }
         setTimeout(function() {
         	document.getElementById('state-refund-return').style.display = "none";
+        	last_printed_from_account = false;
             document.getElementById('state-initial').style.display = "flex";
         }, 5000);
     });
 });
 
 /*state-log-in*/
-document.getElementById('state-log-in-submit').addEventListener('click', function(e) {
-	/*
-	document.getElementById('state-account-existing-ticket').style.display = 'flex';
-    document.getElementById('state-account-existing-ticket').disabled = false;
-    document.getElementById('state-log-in').style.display = 'none';
-    document.getElementById('state-log-in').disabled = true;
-	*/
-	e.preventDefault();
-	var username = document.getElementById('state-log-in-username').value;
-	if(username == 'test1'){
-		document.getElementById('state-account-new-ticket').style.display = 'flex';
-    	document.getElementById('state-account-new-ticket').disabled = false;
-    	document.getElementById('state-log-in').style.display = 'none';
-    	document.getElementById('state-log-in').disabled = true;
-	} else if(username == 'test2'){
-		document.getElementById('state-account-existing-ticket').style.display = 'flex';
-    	document.getElementById('state-account-existing-ticket').disabled = false;
-    	document.getElementById('state-log-in').style.display = 'none';
-    	document.getElementById('state-log-in').disabled = true;
-	}
-}, false);
+
+var log_in_cleanup = function() {
+	account_number = "";
+    document.getElementById('state-log-in-card-number').innerText = account_number;
+};
 
 document.getElementById('state-log-in-cancel-button').addEventListener('click', function() {
-    document.getElementById('state-initial').style.display = 'flex';
+    if (account_number.length > 0) {
+    	    confirm_dialog_state_stay = "state-log-in";
+	    confirm_dialog_state_leave = "state-initial";
+	    confirm_dialog_cleanup_leave = log_in_cleanup;
+    	document.getElementById('state-destructive').style.display = 'flex';
+    } else {
+    	document.getElementById('state-initial').style.display = 'flex';
+    }
     document.getElementById('state-log-in').style.display = 'none';
-    document.getElementById('state-log-in').disabled = true;
 }, false);
 
-document.getElementById('state-account-logout').addEventListener('click', function() {
-    document.getElementById('state-initial').style.display = 'flex';
-    document.getElementById('state-account-new-ticket').style.display = 'none';
-    document.getElementById('state-account-new-ticket').disabled = true;
-}, false);
-
-document.getElementById('state-account-logout-existing').addEventListener('click', function() {
-    document.getElementById('state-initial').style.display = 'flex';
-    document.getElementById('state-account-existing-ticket').style.display = 'none';
-    document.getElementById('state-account-existing-ticket').disabled = true;
-}, false);
-
-
-document.getElementById('state-account-start-new-ticket').addEventListener('click', function() {
-    var max_expiry_time = addMinutes(new Date(), max_time);
-    printTicketWithTime(max_expiry_time, function() {
-        document.getElementById('state-initial').style.display = 'flex';
-        document.getElementById('state-account-new-ticket').style.display = 'none';
-        clearTicket();
-    });
-    
-    document.getElementById('state-account-new-ticket').disabled = true;
-    document.getElementById('state-account-new-ticket').style.display = 'none';
-    goToPrintingScreen('Transaction Approved. Printing Ticket...');
-    document.getElementById('state-printing-text').style.display = 'flex';
-}, false);
-
-document.getElementById('state-account-cancel-existing-ticket').addEventListener('click', function() {
-    // var max_expiry_time = addMinutes(new Date(), max_time);
-    // printTicketWithTime(max_expiry_time, function() {
-    //     document.getElementById('state-initial').style.display = 'flex';
-    //     document.getElementById('state-account-existing-ticket').style.display = 'none';
-    //     clearTicket();
-    // });
-    // document.getElementById('state-account-existing-ticket').disabled = true;
-    // document.getElementById('state-account-existing-ticket').style.display = 'none';
-    // goToPrintingScreen('Transaction Finished. Printing Receipts...');
-    // document.getElementById('state-printing-text').style.display = 'flex';
-
-    document.getElementById('state-account-existing-ticket').style.display = 'none';
-    document.getElementById('state-account-refund').style.display = 'flex';
-    var t = addMinutes(new Date(), randint(30,120));
-    printTicketWithTime(t, function() {
-        document.getElementById('state-account-refund').style.display = 'none';
-        document.getElementById('printer-ticket').style.display = 'none';
-        document.getElementById('state-account-refund-return-text').innerText = 'Printing transaction receipt.';
-        document.getElementById('state-printing').style.display = "none";
-        document.getElementById('state-account-refund-return').style.display = "flex";
-        if(money_back > 0) {
-            document.getElementById('coins').play();
-        }
-        setTimeout(function() {
-            document.getElementById('state-account-refund-return').style.display = "none";
-            document.getElementById('state-initial').style.display = "flex";
-        }, 5000);
-    });
+document.getElementById('state-log-in-submit').addEventListener('click', function() {
+    if (account_number === "5556667771") {
+		document.getElementById('state-log-in').style.display = 'none';
+		goToPrintingScreen('Printing Ticket...');
+        var selectedExpiryDate = new Date();
+        selectedExpiryDate.setMinutes(selectedExpiryDate.getMinutes() + 120);
+		printTicketWithTime(selectedExpiryDate, function() {
+			clearTicket();
+			document.getElementById('state-printing').style.display = 'none';
+			var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
+			document.getElementById('state-initial').style.display = 'flex';
+			account_number = "";
+			last_printed_from_account = true;
+		});
+	} else {
+		var tl = document.getElementById('state-log-in-card-error');
+		var sl = tl.getElementsByTagName('div')[0];
+		tl.style.visibility = "visible";
+		sl.style.animationName = "flash";
+		sl.style.animationPlayState = "running";
+	}
 }, false);
 
 /*state-time*/
@@ -296,10 +258,25 @@ document.getElementById('card-slot').addEventListener('click', function() {
                 s.currentTime = 0;
 			document.getElementById('state-initial').style.display = 'flex';
 		});
+	} else if(document.getElementById('state-log-in').style.display === 'flex') {
+		document.getElementById('state-log-in').style.display = 'none';
+		goToPrintingScreen('Printing Ticket...');
+        var selectedExpiryDate = new Date();
+        selectedExpiryDate.setMinutes(selectedExpiryDate.getMinutes() + 120);
+		printTicketWithTime(selectedExpiryDate, function() {
+			clearTicket();
+			document.getElementById('state-printing').style.display = 'none';
+			var s = document.getElementById('state-printing-alert');
+                s.pause();
+                s.currentTime = 0;
+			document.getElementById('state-initial').style.display = 'flex';
+			account_number = "";
+			last_printed_from_account = true;
+		});
 	}
 }, false);
 
-var keypad_buttons = document.getElementsByClassName('keypad-button');
+var keypad_buttons = document.getElementsByClassName('keypad-button-payment-card');
 for (var  i = 0; i < keypad_buttons.length; i ++) {
 	keypad_buttons[i].addEventListener('click', function(e) {
 		if (e.currentTarget.innerText !== '<') {
@@ -308,6 +285,19 @@ for (var  i = 0; i < keypad_buttons.length; i ++) {
 			}
 		} else if(card_num.length > 0){
 			card_num = card_num.slice(0, -1);
+		}
+	}, false);
+}
+
+var keypad_buttons_log_in = document.getElementsByClassName('keypad-button-log-in');
+for (var  i = 0; i < keypad_buttons_log_in.length; i ++) {
+	keypad_buttons_log_in[i].addEventListener('click', function(e) {
+		if (e.currentTarget.innerText !== '<') {
+			if(account_number.length < 10) {
+				account_number += e.currentTarget.innerText;
+			}
+		} else if(account_number.length > 0){
+			account_number = account_number.slice(0, -1);
 		}
 	}, false);
 }
@@ -341,11 +331,9 @@ document.getElementById('state-payment-card-error').getElementsByTagName('div')[
 	e.currentTarget.style.animationPlayState = "paused";
 }, false);
 
-/*state-account-refund*/
-document.getElementById('state-account-refund-cancel-button').addEventListener('click', function() {
-    document.getElementById('state-account-existing-ticket').style.display = 'flex';
-    document.getElementById('state-account-refund').style.display = 'none';
-    document.getElementById('printer-ticket').style.display = 'none';
+document.getElementById('state-log-in-card-error').getElementsByTagName('div')[0].addEventListener("animationend", function(e) {
+	e.currentTarget.style.animationName = "none";
+	e.currentTarget.style.animationPlayState = "paused";
 }, false);
 
 /*state-refund*/
@@ -455,6 +443,13 @@ function timeUpdate() {
 		document.getElementById('state-payment-card-process').disabled = true;
 	}
 	document.getElementById('state-payment-card-number').innerText = card_num;
+
+	if(account_number.length == 10) {
+		document.getElementById('state-log-in-submit').disabled = false;
+	} else {
+		document.getElementById('state-log-in-submit').disabled = true;
+	}
+	document.getElementById('state-log-in-card-number').innerText = account_number;
 	window.requestAnimationFrame(timeUpdate);
 }
 
