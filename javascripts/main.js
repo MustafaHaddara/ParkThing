@@ -36,6 +36,7 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
     document.getElementById('state-log-in').disabled = false;
     document.getElementById('state-initial').disabled = true;
     document.getElementById('state-log-in').style.display = 'flex';
+    document.getElementById("state-log-in-username").value = "";
 }, false);
 
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
