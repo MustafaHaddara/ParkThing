@@ -73,7 +73,7 @@
           <div class="flex-row state-payment-cash-remaining-wrapper">
             Remaining: <span id="state-payment-cash-remaining">&nbsp;$0.00</span>
           </div>
-          <button id="state-payment-cash-back" class="button red-button state-choose-payment-sec-button">Back</button>
+          <button id="state-payment-cash-back" class="button red-button">Back</button>
         </div>
         <!-- Debit/Credit -->
         <div id="state-payment-card" class="expand">
@@ -103,7 +103,7 @@
             <button id="state-payment-card-9" class="button keypad-button blue-button">9</button>
           </div>
           <div class="flex-row button-row">
-            <div class="keypad-button"></div>
+            <button class="button keypad-button" style="visibility:hidden"></button> <!--Cross platform way to take up uniform space (Safari).-->
             <button id="state-payment-card-0" class="button keypad-button blue-button">0</button>
             <button id="state-payment-card-backspace" class="button keypad-button blue-button">&lt;</button>
           </div>

@@ -9,6 +9,9 @@ var confirm_dialog_state_stay = "";
 var confirm_dialog_state_leave = "";
 var confirm_dialog_cleanup_leave = function() {};
 
+var coin_payment_increment = 25; // cents
+var coin_payment_count = 0;
+
 var d = new Date();
 document.getElementById('current-time').innerText = (d.getHours().toString().length < 2?'0':'') + d.getHours() + ':' + (d.getMinutes().toString().length < 2?'0':'') + d.getMinutes();
 
@@ -188,9 +191,20 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
     document.getElementById('state-choose-payment').style.display = 'none';
 }, false);
 
+var payment_cash_cleanup = function() {
+	coin_payment_count = 0;
+};
+
 /* state-payment- */
 document.getElementById('state-payment-cash-back').addEventListener('click', function() {
-    document.getElementById('state-choose-payment').style.display = 'flex';
+	if (coin_payment_count > 0) {
+    	    confirm_dialog_state_stay = "state-payment-cash";
+	    confirm_dialog_state_leave = "state-choose-payment";
+	    confirm_dialog_cleanup_leave = payment_cash_cleanup;
+    	document.getElementById('state-destructive').style.display = 'flex';
+    } else {
+    	document.getElementById('state-choose-payment').style.display = 'flex';
+    }
     document.getElementById('state-payment-cash').style.display = 'none';
     //TODO: Refund any coinage
 }, false);
@@ -299,7 +313,7 @@ document.getElementById('state-destructive-leave').addEventListener('click', fun
 /*Display msg on the "Now Printing" screen*/
 function goToPrintingScreen(msg) {
     document.getElementById('state-printing').style.display = 'flex';
-    document.getElementById('state-printing-text').innerText = msg;
+    document.getElementById('state-printing-text').innerHTML = msg;
 }
 
 /*print a "physical" ticket*/
@@ -385,19 +399,19 @@ function timeUpdate() {
 window.requestAnimationFrame(timeUpdate);
 
 /*  Physical Coin-Slot */
-var coin_payment_increment = 10; // cents
-var coin_payment_count = 0;
 
 document.getElementById('coin-slot').addEventListener('click', function() {
     coin_payment_count++;
     var l = (payment_time/30*price_per_interval);
-    l = l - coin_payment_increment * coin_payment_count;
-    var m = Math.floor(l/100);        
-    if ((l + m*100) == 0) {
+    var c = l - coin_payment_increment * coin_payment_count;
+    var m = Math.floor(c/100);        
+    if (c <= 0) {
         coin_payment_count = 0;
         if(document.getElementById('state-payment-cash').style.display === 'flex') {
             document.getElementById('state-payment-cash').style.display = 'none';
-            goToPrintingScreen('Transaction Approved. Printing Ticket...');
+            c = Math.abs(c);
+            m = Math.floor(c/100);
+            goToPrintingScreen('Transaction Approved. Printing Ticket...<br> Change: $' + m + '.' +  (c.toString().length < 2? '0':'') + c);
             var selectedExpiryDate = new Date();
             selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
             selectedExpiryDate.setHours(selectedTime[0]);
@@ -410,5 +424,5 @@ document.getElementById('coin-slot').addEventListener('click', function() {
         }
     }     
     l = (l - m*100).toString();   
-    document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' + l + (l.length < 2? '0':'');
+    document.getElementById('state-payment-cash-remaining').innerText = '$' + m + '.' +  (c.toString().length < 2? '0':'') + c;
 }, false);
