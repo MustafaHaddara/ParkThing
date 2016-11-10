@@ -64,6 +64,7 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
         }
         var d = Math.floor(money_back/100);
         var c = money_back - d*100;
+        if(money_back > 0) {
         if (!last_printed_from_account) {
         	document.getElementById('state-refund-return-text').innerHTML = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
     	} else {
@@ -72,6 +73,16 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
     		var f = bal - e*100;
     		document.getElementById('state-refund-return-text').innerHTML = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c + '<br>Account Balance: $' + e + '.' + (f.toString().length < 2?"0":"") + f;
     	}
+        } else {
+            if (!last_printed_from_account) {
+            document.getElementById('state-refund-return-text').innerHTML = 'Ticket Expired';
+        } else {
+            var bal = money_back + randint(100,500);
+            var e = Math.floor(bal/100);
+            var f = bal - e*100;
+            document.getElementById('state-refund-return-text').innerHTML = 'Ticket Expired<br>Account Balance: $' + e + '.' + (f.toString().length < 2?"0":"") + f;
+        }
+        }
        	document.getElementById('state-refund-return').style.display = "flex";
         setTimeout(function() {
         	document.getElementById('state-refund-return').style.display = "none";
