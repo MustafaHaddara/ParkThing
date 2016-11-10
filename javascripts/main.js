@@ -119,6 +119,7 @@ document.getElementById('state-account-start-new-ticket').addEventListener('clic
     document.getElementById('state-account-new-ticket').disabled = true;
     document.getElementById('state-account-new-ticket').style.display = 'none';
     goToPrintingScreen('Transaction Approved. Printing Ticket...');
+    document.getElementById('state-printing-text').style.display = 'flex';
 }, false);
 
 document.getElementById('state-account-cancel-existing-ticket').addEventListener('click', function() {
@@ -131,6 +132,7 @@ document.getElementById('state-account-cancel-existing-ticket').addEventListener
     document.getElementById('state-account-existing-ticket').disabled = true;
     document.getElementById('state-account-existing-ticket').style.display = 'none';
     goToPrintingScreen('Transaction Finished. Printing Receipts...');
+    document.getElementById('state-printing-text').style.display = 'flex';
 }, false);
 
 /*state-time*/
@@ -410,6 +412,7 @@ function randint(start, stop) {
 function clearTicket() {
     document.getElementById('printer-ticket').style.display = 'none';
     document.getElementById('printer-ticket').innerHTML = '';
+    document.getElementById('state-printing-text').style.display = 'none';
 }
 
 function timeUpdate() {
