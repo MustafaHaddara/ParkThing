@@ -169,8 +169,6 @@ document.getElementById('state-time-pay-button').addEventListener('click', funct
 document.getElementById('state-choose-payment-back').addEventListener('click', function() {
     document.getElementById('state-time').style.display = 'flex';
     document.getElementById('state-choose-payment').style.display = 'none';
-    var audio = new Audio('coins.mp3');
-    audio.play();
     //TODO: Refund any coinage
 }, false);
 
@@ -194,6 +192,7 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
 document.getElementById('state-payment-cash-back').addEventListener('click', function() {
     document.getElementById('state-choose-payment').style.display = 'flex';
     document.getElementById('state-payment-cash').style.display = 'none';
+    document.getElementById('coins').play();
     //TODO: Refund any coinage
 }, false);
 
