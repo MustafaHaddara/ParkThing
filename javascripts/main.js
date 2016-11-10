@@ -206,6 +206,7 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
     	document.getElementById('state-choose-payment').style.display = 'flex';
     }
     document.getElementById('state-payment-cash').style.display = 'none';
+    document.getElementById('coins').play();
     //TODO: Refund any coinage
 }, false);
 
