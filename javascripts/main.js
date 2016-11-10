@@ -193,6 +193,7 @@ document.getElementById('state-choose-payment-cash').addEventListener('click', f
 
 var payment_cash_cleanup = function() {
 	coin_payment_count = 0;
+    document.getElementById('coins').play();
 };
 
 /* state-payment- */
@@ -206,7 +207,7 @@ document.getElementById('state-payment-cash-back').addEventListener('click', fun
     	document.getElementById('state-choose-payment').style.display = 'flex';
     }
     document.getElementById('state-payment-cash').style.display = 'none';
-    document.getElementById('coins').play();
+    
     //TODO: Refund any coinage
 }, false);
 
@@ -417,6 +418,9 @@ document.getElementById('coin-slot').addEventListener('click', function() {
             selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
             selectedExpiryDate.setHours(selectedTime[0]);
             selectedExpiryDate.setMinutes(selectedTime[1]);
+            if (c > 0) {
+                document.getElementById('coins').play();
+            }
             printTicketWithTime(selectedExpiryDate, function() {
                 clearTicket();
                 document.getElementById('state-printing').style.display = 'none';
