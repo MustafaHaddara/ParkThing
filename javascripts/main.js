@@ -317,9 +317,7 @@ document.getElementById('state-payment-card-process').addEventListener('click', 
 		document.getElementById('state-payment-card').style.display = 'none';
 		goToPrintingScreen('Transaction Approved. Printing Ticket...');
         var selectedExpiryDate = new Date();
-        selectedTime = document.getElementById('state-time-exp-time').innerText.split(':');
-        selectedExpiryDate.setHours(selectedTime[0]);
-        selectedExpiryDate.setMinutes(selectedTime[1]);
+        selectedExpiryDate.setMinutes(selectedExpiryDate.getMinutes() + payment_time);
 		printTicketWithTime(selectedExpiryDate, function() {
 			clearTicket();
 			document.getElementById('state-printing').style.display = 'none';
