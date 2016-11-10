@@ -2,17 +2,17 @@
 /*Do noscript check*/
 /*Have hidden text to indicate CSS loading failure*/
 
-@media (max-width: 1366px), (max-height: 768px) {
+@media (max-width: 1280px), (max-height: 720px) {
   #flex-container {
-  	height: 768px;
-  	width: 1366px;
+  	height: 720px;
+  	width: 1280px;
   }
   #flex-container {
   	margin:0 auto;
   }
 }
 
-@media (min-width: 1367px) and (min-height: 769px) {
+@media (min-width: 1281px) and (min-height: 721px) {
   html,body, #flex-container {
   	background-color: #262F4C;
   	height: 100%;

@@ -54,6 +54,9 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
         } else {
         	money_back += (5 -(money_back%5));
         }
+        if(money_back > 0 && !last_printed_from_account) {
+            document.getElementById('coins').play();
+        }
         if(last_printed_from_account) {
         	money_back = 120 - money_back; // 120 is 2hr*30c/30min
         }
