@@ -44,8 +44,9 @@ h3 {
 #ui-container > .flex-row {
 	display: flex;
 	border: black solid 1px;
-	font-size: 16pt;
+	font-size: 24pt;
 	color: #BAC4DF;
+	background-color: #474954;
 }
 
 #current-time {
@@ -75,7 +76,7 @@ h3 {
 }
 
 #ui-container {
-	background-color: #474954;
+	background-color: #AAAAAA;
 	display: flex;
 	flex-basis: 300px;
 	flex-grow: 50;
