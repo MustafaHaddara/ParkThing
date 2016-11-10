@@ -4,8 +4,12 @@
 
 @media (max-width: 1280px), (max-height: 720px) {
   #flex-container {
+  	min-height: 720px;
+  	min-width: 1280px;
   	height: 720px;
   	width: 1280px;
+  	max-height: 720px;
+  	max-width: 1280px;
   }
   #flex-container {
   	margin:0 auto;
@@ -65,7 +69,7 @@ h3 {
 
 #flex-row {
 	display:flex;
-	flex-basis: 80vh;
+	/*flex-basis: 80vh;*/
 	flex-grow: 5;
 	flex-direction: row;
 }
