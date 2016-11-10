@@ -14,11 +14,13 @@
 
 @media (min-width: 1367px) and (min-height: 769px) {
   html,body, #flex-container {
+  	background-color: #262F4C;
   	height: 100%;
   }
 }
 
 html, body {
+	background-color: #262F4C;
 	margin:0;
 	padding: 0;
 }
@@ -70,7 +72,7 @@ h1 {
 }
 
 #physical-payment-container {
-	background-color: #00FF00;
+	background-color: #262F4C;
 	display: flex;
 	flex-basis: 200px;
 	flex-grow: 1;
@@ -105,6 +107,12 @@ h1 {
 	height: 100%;
 	background-color: #666666;
 	margin-left: 40%;
+}
+
+#coin-depositer {
+	width: 80%;
+	height: 20%;
+	background-color: #808080;
 }
 
 #print-container {
