@@ -148,10 +148,10 @@ document.getElementById('state-account-cancel-existing-ticket').addEventListener
         if(money_back > 0) {
             document.getElementById('coins').play();
         }
-        // setTimeout(function() {
-        //     document.getElementById('state-account-refund-return').style.display = "none";
-        //     document.getElementById('state-initial').style.display = "flex";
-        // }, 5000);
+        setTimeout(function() {
+            document.getElementById('state-account-refund-return').style.display = "none";
+            document.getElementById('state-initial').style.display = "flex";
+        }, 5000);
     });
 }, false);
 
@@ -341,6 +341,13 @@ document.getElementById('state-payment-card-process').addEventListener('click', 
 document.getElementById('state-payment-card-error').getElementsByTagName('div')[0].addEventListener("animationend", function(e) {
 	e.currentTarget.style.animationName = "none";
 	e.currentTarget.style.animationPlayState = "paused";
+}, false);
+
+/*state-account-refund*/
+document.getElementById('state-account-refund-cancel-button').addEventListener('click', function() {
+    document.getElementById('state-account-existing-ticket').style.display = 'flex';
+    document.getElementById('state-account-refund').style.display = 'none';
+    document.getElementById('printer-ticket').style.display = 'none';
 }, false);
 
 /*state-refund*/
