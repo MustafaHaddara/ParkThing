@@ -497,7 +497,7 @@ form {
 	flex-direction: column;
 }
 
-#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund, #state-printing, #state-destructive {
+#state-time, #state-choose-payment, #state-payment-cash, #state-log-in, #state-payment-card, #state-account-new-ticket, #state-account-existing-ticket, #state-refund, #state-printing, #state-destructive, #state-refund-return {
 	display:none;
 	flex-direction:column;
 }
@@ -584,4 +584,38 @@ form {
 
 #coins {
 	display: none;
+}
+
+/* state-refund */
+#state-refund {
+	flex-direction: column;
+}
+
+#state-refund > h1 {
+	font-size: 40pt;
+}
+
+#state-refund-cancel-button {
+	flex-grow: 1;
+	flex-shrink: 1;
+	max-height: 75pt;
+	font-size: 32pt;
+	width: 70%;
+	margin-bottom: 15pt;
+	align-self: center;
+}
+
+#state-refund-return {
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: space-around;
+	margin: auto;
+}
+
+#state-refund-return-text {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 60pt;
+	font-size: 36pt;
+	align-self: center;
 }

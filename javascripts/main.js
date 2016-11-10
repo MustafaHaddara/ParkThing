@@ -42,21 +42,27 @@ document.getElementById('state-initial-prepaid-button').addEventListener('click'
 document.getElementById('state-initial-refund-button').addEventListener('click', function() {
     document.getElementById('state-initial').style.display = 'none';
     document.getElementById('state-refund').style.display = 'flex';
-    printTicketWithTime(addMinutes(new Date(), randint(30,120)), function() {
+    var t = addMinutes(new Date(), randint(30,120));
+    printTicketWithTime(t, function() {
         document.getElementById('state-refund').style.display = 'none';
         document.getElementById('printer-ticket').style.display = 'none';
-        goToPrintingScreen('Now printing voucher, please wait');
+        var money_back = Math.round((t - new Date()) / 60000)*price_per_interval/payment_interval;
+        if((money_back%5) < 3) {
+        	money_back -= (money_back%5);
+        } else {
+        	money_back += (5 -(money_back%5));
+        }
+        var d = Math.floor(money_back/100);
+        var c = money_back - d*100;
+        document.getElementById('state-refund-return-text').innerText = 'Refund: $' + d + '.' + (c.toString().length < 2?"0":"") + c;
+       	document.getElementById('state-refund-return').style.display = "flex";
+        if(money_back > 0) {
+        	document.getElementById('coins').play();
+        }
         setTimeout(function() {
-            printTicket('You have $10 of unused parking time!<br>Redeem this online at myparking.fakecity.ca', function() {
-                document.getElementById('state-printing').style.display = 'none';
-                document.getElementById('printer-ticket').style.display = 'none';
-                var s = document.getElementById('state-printing-alert');
-                s.pause();
-                s.currentTime = 0;
-                document.getElementById('state-initial').style.display = 'flex';
-            })
-            goToPrintingScreen('Please take your voucher');
-        }, 1500);
+        	document.getElementById('state-refund-return').style.display = "none";
+            document.getElementById('state-initial').style.display = "flex";
+        }, 5000);
     });
 });
 
