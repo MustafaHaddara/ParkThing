@@ -14,12 +14,19 @@
   #flex-container {
   	margin:0 auto;
   }
+
+  #flex-row {
+  	flex-basis: 566px;
+  }
 }
 
 @media (min-width: 1281px) and (min-height: 721px) {
   html,body, #flex-container {
   	background-color: #262F4C;
   	height: 100%;
+  }
+  #flex-row {
+  	flex-basis: 80vh;
   }
 }
 
@@ -69,7 +76,6 @@ h3 {
 
 #flex-row {
 	display:flex;
-	/*flex-basis: 80vh;*/
 	flex-grow: 5;
 	flex-direction: row;
 }
