@@ -49,11 +49,13 @@ document.getElementById('state-initial-refund-button').addEventListener('click',
         document.getElementById('state-refund').style.display = 'none';
         document.getElementById('printer-ticket').style.display = 'none';
         var money_back = Math.round((t - new Date()) / 60000)*price_per_interval/payment_interval;
-        if((money_back%5) < 3) {
-        	money_back -= (money_back%5);
-        } else {
-        	money_back += (5 -(money_back%5));
-        }
+        if (!last_printed_from_account) {
+	        if((money_back%5) < 3) {
+	        	money_back -= (money_back%5);
+	        } else {
+	        	money_back += (5 -(money_back%5));
+	        }
+	    }
         if(money_back > 0 && !last_printed_from_account) {
             document.getElementById('coins').play();
         }
